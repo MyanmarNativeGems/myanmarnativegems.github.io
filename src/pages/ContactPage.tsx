@@ -80,6 +80,7 @@ export function ContactPage() {
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const [result, setResult] = useState<InquiryResult | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const selectedGem = gems.find((gem) => gem.no === values.gemNo)
   const preselectedGem = gems.find((gem) => gem.no === preselectedNo)
@@ -106,7 +107,18 @@ export function ContactPage() {
           : '',
       message: values.message.trim(),
     }
-    setResult(await submitInquiry(draft))
+    setIsSubmitting(true)
+    try {
+      setResult(await submitInquiry(draft))
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const startOver = () => {
+    setValues({ name: '', email: '', phone: '', gemNo: '', message: '' })
+    setErrors({})
+    setResult(null)
   }
 
   return (
@@ -219,21 +231,42 @@ export function ContactPage() {
             />
           </Field>
 
-          {result && !result.delivered ? (
+          {result?.delivered ? (
             <div className="border border-line bg-ivory-deep p-6" role="status">
-              <h2 className="font-serif text-xl font-medium">One more step</h2>
+              <h2 className="font-serif text-xl font-medium">
+                Inquiry sent
+              </h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                Sending directly from this page is not set up yet, so your
-                inquiry is not sent automatically. The button below opens a
-                prefilled draft in your email app; review it and press send.
+                Thank you, {values.name.split(' ')[0] || 'there'}. We've
+                received your inquiry and will reply personally, usually
+                within a day or two.
+              </p>
+              <Button
+                type="button"
+                variant="outline"
+                className="mt-5"
+                onClick={startOver}
+              >
+                Send Another Inquiry
+              </Button>
+            </div>
+          ) : result && !result.delivered ? (
+            <div className="border border-line bg-ivory-deep p-6" role="status">
+              <h2 className="font-serif text-xl font-medium">
+                {result.attempted ? 'Something went wrong' : 'One more step'}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                {result.attempted
+                  ? "Your inquiry could not be sent automatically. Please use the button below to send it by email instead, and accept our apologies for the extra step."
+                  : 'Sending directly from this page is not set up yet, so your inquiry is not sent automatically. The button below opens a prefilled draft in your email app; review it and press send.'}
               </p>
               <Button href={result.mailtoUrl} variant="ruby" className="mt-5">
                 Open Email Draft
               </Button>
             </div>
           ) : (
-            <Button type="submit" variant="ruby">
-              Continue
+            <Button type="submit" variant="ruby" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending…' : 'Send Inquiry'}
             </Button>
           )}
         </form>

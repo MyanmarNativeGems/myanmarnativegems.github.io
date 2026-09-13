@@ -42,6 +42,11 @@ jobs:
           # Repository variable overrides the default. The Sheet URL is
           # intentionally public: it is the public product catalog.
           VITE_GEMS_SHEET_URL: ${{ vars.VITE_GEMS_SHEET_URL || 'https://docs.google.com/spreadsheets/d/15ecCh3G3JogHYwb_rLZlWEFrB3Z3fOH1G5-b7GlFEhQ/gviz/tq?tqx=out:csv&gid=0' }}
+          # Repository variable overrides the default. Like the Sheet URL,
+          # this is meant to be public: it's embedded in the JS bundle
+          # either way, and it only accepts inquiry submissions, nothing
+          # sensitive. See scripts/google-apps-script/inquiry-to-sheet.gs.
+          VITE_INQUIRY_ENDPOINT_URL: ${{ vars.VITE_INQUIRY_ENDPOINT_URL || 'https://script.google.com/macros/s/AKfycbzawsLUwZcnlbQg1Q8pkoiMTFheETHyGp-KrVUUjlmZ3if9OUNBSbtvWAgvxIns-Jd5/exec' }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v6
