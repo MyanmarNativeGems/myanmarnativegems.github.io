@@ -49,11 +49,14 @@ export function GemImage({
         </div>
       ) : (
         <>
+          {/* no-referrer: Google's Drive image CDN answers 429 to any
+              request carrying a third-party Referer header. */}
           <img
             src={src}
             alt={alt}
             loading={loading}
             decoding="async"
+            referrerPolicy="no-referrer"
             onError={() => setPrimaryFailed(true)}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
@@ -64,6 +67,7 @@ export function GemImage({
               aria-hidden
               loading="lazy"
               decoding="async"
+              referrerPolicy="no-referrer"
               onError={() => setHoverFailed(true)}
               className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none"
             />
