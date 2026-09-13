@@ -177,8 +177,9 @@ public/images/  placeholder artwork (replace with real photography)
 
 ## Before real launch (TODOs)
 
-- Replace the placeholder artwork in `public/images/` (hero and the four
-  gemstone tiles) with real photography.
+- Replace the placeholder artwork for the four gemstone tiles in
+  `public/images/gems/` with real photography (the hero and Our Story
+  already use real photos).
 - Add an `og:image` (1200x630) and reference it in `index.html`.
 - Optionally connect the inquiry form to a real backend (Formspree, Google
   Apps Script, or a custom API) by implementing `submitInquiry()` in

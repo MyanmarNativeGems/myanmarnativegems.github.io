@@ -25,10 +25,9 @@ export function Hero() {
           </div>
         </div>
         <div className="md:col-span-7">
-          {/* Placeholder art: replace public/images/home/hero.svg with real photography. */}
           <img
-            src="/images/home/hero.svg"
-            alt=""
+            src="/images/home/hero.jpg"
+            alt="Rough ruby crystal on white marble matrix"
             fetchPriority="high"
             className="h-[380px] w-full object-cover md:h-[520px]"
           />
