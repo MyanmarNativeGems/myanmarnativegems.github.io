@@ -1,7 +1,7 @@
 # Myanmar Native Gems
 
 A curated online gallery of fine cut gemstones, live at
-**[burmagems.github.io](https://burmagems.github.io)**.
+**[myanmarnativegems.github.io](https://myanmarnativegems.github.io)**.
 
 The site is a static React SPA. Gemstone inventory lives in a Google Sheet
 and is fetched by the browser at runtime, so editing the Sheet updates the
@@ -21,8 +21,8 @@ in Markdown files and is bundled at build time.
 ## Local development
 
 ```bash
-git clone https://github.com/BurmaGems/burmagems.github.io.git
-cd burmagems.github.io
+git clone https://github.com/MyanmarNativeGems/myanmarnativegems.github.io.git
+cd myanmarnativegems.github.io
 npm install
 cp env.example .env.local
 npm run dev
@@ -146,7 +146,7 @@ Settings -> Pages -> Build and deployment -> Source -> GitHub Actions
 
 After that, every push to `main` runs `.github/workflows/deploy.yml`
 (lint, typecheck, build, deploy) and publishes to
-`https://burmagems.github.io`.
+`https://myanmarnativegems.github.io`.
 
 The Vite config uses `base: "/"` because this is the account root site.
 Routing uses `HashRouter` (`/#/gems`, `/#/gem/12`) so deep links work on

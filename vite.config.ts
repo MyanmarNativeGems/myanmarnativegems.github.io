@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Served from the domain root of burmagems.github.io.
+  // Served from the domain root of myanmarnativegems.github.io.
   base: '/',
   plugins: [react(), tailwindcss()],
 })

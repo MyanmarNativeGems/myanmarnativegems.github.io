@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: 'Rare by Nature.',
   description:
     'A curated collection of natural, untreated cut gemstones from Mogok, Myanmar.',
-  url: 'https://burmagems.github.io',
+  url: 'https://myanmarnativegems.github.io',
   email: 'myanmarnativegems2024@gmail.com',
   // TODO: set the Instagram profile URL when available (leave empty to hide).
   instagram: '',
