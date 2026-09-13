@@ -1,7 +1,23 @@
-import type { ReactNode } from 'react'
-import ReactMarkdown from 'react-markdown'
+import type { ComponentProps, ReactNode } from 'react'
+import ReactMarkdown, { type ExtraProps } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { cn } from '../../lib/utils'
+
+/**
+ * A paragraph that contains only an image renders as a <figure> (see the
+ * img component below); unwrap it so we don't nest figure inside p.
+ */
+function Paragraph({ children, node }: ComponentProps<'p'> & ExtraProps) {
+  const significant = node?.children.filter(
+    (child) => !(child.type === 'text' && child.value.trim() === ''),
+  )
+  const imageOnly =
+    significant?.length === 1 &&
+    significant[0].type === 'element' &&
+    significant[0].tagName === 'img'
+  if (imageOnly) return <>{children}</>
+  return <p className="mt-5">{children}</p>
+}
 
 function heading(level: 2 | 3) {
   const Tag = `h${level}` as const
@@ -39,7 +55,7 @@ export function MarkdownContent({
           h1: heading(2),
           h2: heading(2),
           h3: heading(3),
-          p: ({ children }) => <p className="mt-5">{children}</p>,
+          p: Paragraph,
           a: ({ href, children }) => (
             <a
               href={href}
@@ -76,13 +92,21 @@ export function MarkdownContent({
               {children}
             </td>
           ),
-          img: ({ src, alt }) => (
-            <img
-              src={typeof src === 'string' ? src : undefined}
-              alt={alt ?? ''}
-              loading="lazy"
-              className="mt-8 w-full"
-            />
+          img: ({ src, alt, title }) => (
+            <figure className="mt-10">
+              <img
+                src={typeof src === 'string' ? src : undefined}
+                alt={alt ?? ''}
+                loading="lazy"
+                decoding="async"
+                className="mx-auto max-h-[560px] w-auto max-w-full"
+              />
+              {title && (
+                <figcaption className="mt-3 text-center text-sm text-ink-soft">
+                  {title}
+                </figcaption>
+              )}
+            </figure>
           ),
         }}
       >
