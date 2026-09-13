@@ -26,4 +26,4 @@ Diffusion introduces coloring elements into the surface of a stone at high tempe
 
 ## Our practice
 
-For any stone in our collection, we will tell you what is documented about its treatment and share any available laboratory report. Where treatment status has not been determined by a laboratory, we say so rather than guess.
+Every stone Burma Gems sells is 100% natural and untreated: no heat, no filling, no dyeing, no diffusion. Our stones are sold as they came out of the ground in Mogok. If you would like this verified independently, we are glad to discuss laboratory testing for any stone before purchase.

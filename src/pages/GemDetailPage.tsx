@@ -4,6 +4,7 @@ import { Button } from '../components/common/Button'
 import { Container } from '../components/common/Container'
 import { ErrorState } from '../components/common/ErrorState'
 import { GemGallery } from '../components/gems/GemGallery'
+import { provenance } from '../config/site'
 import { useGem } from '../hooks/useGems'
 import { formatKyat } from '../lib/currency'
 import { formatCarat, gemAltText } from '../lib/utils'
@@ -128,6 +129,14 @@ export function GemDetailPage() {
                   <div className="flex justify-between gap-6 py-3 text-sm">
                     <dt className="text-ink-soft">Gem No.</dt>
                     <dd>{gem.no}</dd>
+                  </div>
+                  <div className="flex justify-between gap-6 py-3 text-sm">
+                    <dt className="text-ink-soft">Origin</dt>
+                    <dd>{provenance.origin}</dd>
+                  </div>
+                  <div className="flex justify-between gap-6 py-3 text-sm">
+                    <dt className="text-ink-soft">Treatment</dt>
+                    <dd>{provenance.treatment}</dd>
                   </div>
                   <div className="flex justify-between gap-6 py-3 text-sm">
                     <dt className="text-ink-soft">Availability</dt>

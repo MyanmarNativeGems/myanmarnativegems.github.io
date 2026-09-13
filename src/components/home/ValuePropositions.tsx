@@ -2,12 +2,12 @@ import { Container } from '../common/Container'
 
 const VALUES = [
   {
-    title: 'Carefully Selected',
-    body: 'A small collection, chosen stone by stone. If a gem is listed here, it earned its place.',
+    title: 'Mined in Mogok',
+    body: 'Every stone we sell comes from Mogok, the valley in northern Myanmar celebrated for its rubies and spinels for centuries.',
   },
   {
-    title: 'Clearly Presented',
-    body: 'Weight, price, photographs, and documentation where it exists. Nothing invented, nothing hidden.',
+    title: 'Natural and Untreated',
+    body: 'Our stones are 100% natural, with no heat and no other treatments. What you see is how the stone came out of the ground.',
   },
   {
     title: 'Personal Service',

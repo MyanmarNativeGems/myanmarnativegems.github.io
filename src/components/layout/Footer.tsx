@@ -97,8 +97,8 @@ export function Footer() {
             © {new Date().getFullYear()} {siteConfig.name}
           </p>
           <p>
-            Gemstone details are stated per listing. Contact us for
-            certification and availability.
+            All stones are natural, untreated, and mined in Mogok, Myanmar.
+            Contact us for certification and availability.
           </p>
         </Container>
       </div>

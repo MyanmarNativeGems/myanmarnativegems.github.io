@@ -1,6 +1,6 @@
 ---
 title: Our Story
-description: A small gallery devoted to individual cut gemstones, presented plainly and chosen with care.
+description: A small gallery of natural, untreated gemstones from Mogok, presented plainly and chosen with care.
 slug: our-story
 template: editorial
 order: 1
@@ -9,6 +9,10 @@ order: 1
 Burma Gems began with a simple conviction: a fine gemstone deserves to be seen on its own terms.
 
 Myanmar has been associated with celebrated gemstones for centuries. Its historic mining regions are woven into the story of ruby, jade, sapphire, and spinel, and that heritage shapes how we look at stones. We grew up around this tradition, and it taught us to value the individual stone over the category: the particular color, the particular cut, the particular character that no photograph fully captures.
+
+## From Mogok
+
+Every stone in our collection is mined in [Mogok](https://wikitravel.org/en/Moegoke), the valley in northern Myanmar that has produced many of the world's celebrated rubies and spinels for centuries. We sell our stones exactly as they came out of the ground: 100% natural, with no heat and no other treatments.
 
 ## What we do
 
