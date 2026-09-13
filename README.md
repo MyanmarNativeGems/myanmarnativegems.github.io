@@ -177,8 +177,6 @@ public/images/  placeholder artwork (replace with real photography)
 
 ## Before real launch (TODOs)
 
-- Replace `email` in `src/config/site.ts` (currently a placeholder) with the
-  real inquiry inbox.
 - Replace the placeholder artwork in `public/images/` (hero and the four
   gemstone tiles) with real photography.
 - Add an `og:image` (1200x630) and reference it in `index.html`.
