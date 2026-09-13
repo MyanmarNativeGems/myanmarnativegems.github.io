@@ -1,0 +1,50 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/cormorant-garamond';
+@import 'tailwindcss';
+
+/*
+ * Burma Gems visual system.
+ * One locked light theme: warm ivory ground, dark ink typography,
+ * gold and ruby used sparingly. Sharp corners everywhere.
+ */
+@theme {
+  --font-sans:
+    'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    sans-serif;
+  --font-serif:
+    'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia,
+    'Times New Roman', serif;
+
+  --color-ivory: #faf8f4;
+  --color-ivory-deep: #f2eee6;
+  --color-ink: #191714;
+  --color-ink-soft: #706b63;
+  --color-line: #e7e1d8;
+  /* Bright gold: borders, rules, and large type only (3.2:1 on ivory). */
+  --color-gold: #a88652;
+  /* Deep gold: AA-safe for small text on ivory (5.1:1). */
+  --color-gold-deep: #82653a;
+  --color-ruby: #7a1826;
+  --color-ruby-deep: #5e121d;
+}
+
+@layer base {
+  body {
+    @apply bg-ivory font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-ruby text-ivory;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ruby);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}

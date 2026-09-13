@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Placeholder artwork in sapphire tones">
+  <defs>
+    <linearGradient id="sapphire-base" x1="0" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#14304f"/>
+      <stop offset="1" stop-color="#081527"/>
+    </linearGradient>
+    <radialGradient id="sapphire-glow-a" cx="0.32" cy="0.28" r="0.75">
+      <stop offset="0" stop-color="#3d6c9e" stop-opacity="0.85"/>
+      <stop offset="0.55" stop-color="#3d6c9e" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#3d6c9e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sapphire-glow-b" cx="0.78" cy="0.85" r="0.6">
+      <stop offset="0" stop-color="#7aa3cc" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#7aa3cc" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#sapphire-base)"/>
+  <rect width="800" height="1000" fill="url(#sapphire-glow-a)"/>
+  <rect width="800" height="1000" fill="url(#sapphire-glow-b)"/>
+  <g fill="none" stroke="#faf8f4" stroke-opacity="0.16" stroke-width="1.5">
+    <ellipse cx="400" cy="560" rx="230" ry="300"/>
+    <ellipse cx="400" cy="560" rx="150" ry="196"/>
+    <path d="M563 348 L506 421"/>
+    <path d="M237 348 L294 421"/>
+    <path d="M563 772 L506 699"/>
+    <path d="M237 772 L294 699"/>
+    <path d="M400 260 L400 364"/>
+    <path d="M400 860 L400 756"/>
+    <path d="M170 560 L250 560"/>
+    <path d="M630 560 L550 560"/>
+  </g>
+</svg>

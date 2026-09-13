@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-label="Placeholder hero artwork in deep ruby tones">
+  <defs>
+    <linearGradient id="hero-base" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#3f0c14"/>
+      <stop offset="1" stop-color="#1d0509"/>
+    </linearGradient>
+    <radialGradient id="hero-glow-a" cx="0.36" cy="0.3" r="0.8">
+      <stop offset="0" stop-color="#a03246" stop-opacity="0.9"/>
+      <stop offset="0.5" stop-color="#a03246" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#a03246" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hero-glow-b" cx="0.85" cy="0.9" r="0.7">
+      <stop offset="0" stop-color="#c96a53" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#c96a53" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="hero-glow-gold" cx="0.75" cy="0.06" r="0.55">
+      <stop offset="0" stop-color="#a88652" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#a88652" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="1125" fill="url(#hero-base)"/>
+  <rect width="900" height="1125" fill="url(#hero-glow-a)"/>
+  <rect width="900" height="1125" fill="url(#hero-glow-b)"/>
+  <rect width="900" height="1125" fill="url(#hero-glow-gold)"/>
+  <g fill="none" stroke="#faf8f4" stroke-opacity="0.18" stroke-width="1.6">
+    <ellipse cx="450" cy="630" rx="260" ry="340"/>
+    <ellipse cx="450" cy="630" rx="170" ry="222"/>
+    <path d="M634 390 L570 473"/>
+    <path d="M266 390 L330 473"/>
+    <path d="M634 870 L570 787"/>
+    <path d="M266 870 L330 787"/>
+    <path d="M450 290 L450 408"/>
+    <path d="M450 970 L450 852"/>
+    <path d="M190 630 L280 630"/>
+    <path d="M710 630 L620 630"/>
+  </g>
+</svg>
