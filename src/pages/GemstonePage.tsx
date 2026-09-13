@@ -5,7 +5,7 @@ import { ErrorState } from '../components/common/ErrorState'
 import { GemGridSkeleton } from '../components/common/LoadingSkeleton'
 import { GemGrid } from '../components/gems/GemGrid'
 import { InquiryCTA } from '../components/home/InquiryCTA'
-import type { GemstoneCategory } from '../config/gemstones'
+import { gemstoneCategories, type GemstoneCategory } from '../config/gemstones'
 import { useGems } from '../hooks/useGems'
 import { getContent } from '../lib/markdown'
 
@@ -18,13 +18,23 @@ export function GemstonePage({ category }: { category: GemstoneCategory }) {
   const guide = getContent('education', category.guideSlug)
   const { gems, isLoading, error, refetch } = useGems()
 
-  const matching = useMemo(
-    () =>
-      gems.filter((gem) =>
-        gem.gemType.toLowerCase().includes(category.keyword),
-      ),
-    [gems, category.keyword],
-  )
+  const matching = useMemo(() => {
+    const keyword = category.keyword
+    if (!keyword) {
+      // Catch-all "Others" category: anything that isn't one of the named
+      // gemstone types gets listed here instead of disappearing silently.
+      const namedKeywords = gemstoneCategories
+        .map((c) => c.keyword)
+        .filter((k): k is string => Boolean(k))
+      return gems.filter(
+        (gem) =>
+          !namedKeywords.some((namedKeyword) =>
+            gem.gemType.toLowerCase().includes(namedKeyword),
+          ),
+      )
+    }
+    return gems.filter((gem) => gem.gemType.toLowerCase().includes(keyword))
+  }, [gems, category.keyword])
 
   return (
     <article>
@@ -49,11 +59,10 @@ export function GemstonePage({ category }: { category: GemstoneCategory }) {
             )}
           </div>
           <div className="md:col-span-6">
-            {/* Placeholder art: replace with real photography. */}
             <img
               src={category.image}
               alt=""
-              className="h-[280px] w-full object-cover md:h-[380px]"
+              className="h-[280px] w-full bg-ivory-deep object-cover md:h-[380px]"
             />
           </div>
         </Container>

@@ -5,12 +5,13 @@ export interface NavLinkItem {
   label: string
 }
 
+// "Learn" and "Our Story" were dropped from the primary nav to make room
+// for the growing list of gemstone categories; both stay reachable from
+// the footer (see Footer.tsx).
 export const navLinks: NavLinkItem[] = [
   { to: '/gems', label: 'Gemstones' },
   ...gemstoneCategories.map((category) => ({
     to: `/${category.slug}`,
     label: category.name,
   })),
-  { to: '/education', label: 'Learn' },
-  { to: '/about', label: 'Our Story' },
 ]

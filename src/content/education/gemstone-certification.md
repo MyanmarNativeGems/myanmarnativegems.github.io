@@ -2,7 +2,7 @@
 title: Gemstone Certification
 description: What a laboratory report does and does not tell you about a stone.
 slug: gemstone-certification
-order: 6
+order: 8
 template: guide
 ---
 

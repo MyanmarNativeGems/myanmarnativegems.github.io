@@ -2,7 +2,7 @@
 title: Gemstone Treatments
 description: The common treatments in the colored stone trade and why disclosure matters.
 slug: gemstone-treatment
-order: 5
+order: 7
 template: guide
 ---
 

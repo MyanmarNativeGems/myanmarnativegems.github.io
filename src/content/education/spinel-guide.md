@@ -2,7 +2,7 @@
 title: Understanding Spinel
 description: The historically misidentified gem that connoisseurs now seek in its own right.
 slug: spinel
-order: 4
+order: 5
 template: guide
 ---
 
