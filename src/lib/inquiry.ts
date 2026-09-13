@@ -67,9 +67,18 @@ const ENDPOINT_URL = import.meta.env.VITE_INQUIRY_ENDPOINT_URL as
  * row in the Sheet; the UI already handles the not-configured, delivered,
  * and failed-attempt cases.
  *
- * The body is sent as application/x-www-form-urlencoded (not JSON) so the
- * browser treats it as a CORS-simple request. A JSON body would trigger a
- * preflight OPTIONS request, which Apps Script Web Apps do not answer.
+ * mode: 'no-cors' is required here, not just convenient. Apps Script Web
+ * App responses do not carry an Access-Control-Allow-Origin header (this
+ * is a platform limitation, not a misconfiguration on the script's side:
+ * ContentService output has no way to set that header), so a normal
+ * cross-origin fetch() has its response blocked by the browser even
+ * though the request itself reaches the script and appends the row. With
+ * no-cors the browser still sends the request but treats the response as
+ * opaque, so we can no longer read a JSON body or status code to confirm
+ * success — a resolved fetch is the most we can honestly know, which is
+ * why "delivered" below means "the browser handed this off successfully,"
+ * not "the script confirmed it wrote the row." A thrown error still means
+ * a real failure (offline, DNS, the endpoint unreachable).
  */
 export async function submitInquiry(
   draft: InquiryDraft,
@@ -81,8 +90,9 @@ export async function submitInquiry(
   }
 
   try {
-    const response = await fetch(ENDPOINT_URL, {
+    await fetch(ENDPOINT_URL, {
       method: 'POST',
+      mode: 'no-cors',
       body: new URLSearchParams({
         name: draft.name,
         email: draft.email,
@@ -91,17 +101,7 @@ export async function submitInquiry(
         message: draft.message,
       }),
     })
-    if (!response.ok) {
-      devWarn(`Inquiry endpoint responded with status ${response.status}.`)
-      return { delivered: false, attempted: true, mailtoUrl }
-    }
-    const data: unknown = await response.json().catch(() => null)
-    const delivered =
-      Boolean(data) &&
-      typeof data === 'object' &&
-      (data as { ok?: unknown }).ok === true
-    if (!delivered) devWarn('Inquiry endpoint did not confirm delivery:', data)
-    return { delivered, attempted: true, mailtoUrl }
+    return { delivered: true, attempted: true, mailtoUrl }
   } catch (error) {
     devWarn('Inquiry submission failed:', error)
     return { delivered: false, attempted: true, mailtoUrl }
