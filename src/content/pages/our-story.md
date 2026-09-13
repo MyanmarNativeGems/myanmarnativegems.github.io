@@ -3,11 +3,11 @@ title: Our Story
 description: A small gallery of natural, untreated gemstones from Mogok, presented plainly and chosen with care.
 slug: our-story
 template: editorial
-heroImage: /images/story/stone-in-hand-wide.jpg
+heroImage: /images/story/earrings-rough.jpg
 order: 1
 ---
 
-Burma Gems began with a simple conviction: a fine gemstone deserves to be seen on its own terms.
+Myanmar Native Gems began with a simple conviction: a fine gemstone deserves to be seen on its own terms.
 
 Myanmar has been associated with celebrated gemstones for centuries, and no place carries that history like Mogok. We grew up around this tradition, and it taught us to value the individual stone over the category: the particular color, the particular cut, the particular character that no photograph fully captures.
 
@@ -46,7 +46,5 @@ We are not a marketplace, and we do not aspire to be one. There is no cart and n
 ## What we believe
 
 A gemstone is bought once and kept for a long time, often for generations. That calls for patience from the seller as much as from the buyer. We would rather you ask one more question than wonder later. If we do not know something about a stone, we will say so.
-
-![A finished pair of earrings among rough stones from the valley](/images/story/earrings-rough.jpg "A finished pair among rough from the valley.")
 
 If a stone in the collection catches your eye, or if you are searching for something specific, we would be glad to hear from you.

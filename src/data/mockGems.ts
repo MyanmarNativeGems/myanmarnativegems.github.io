@@ -56,4 +56,12 @@ export const mockGems: Gem[] = [
     isSold: true,
     images: ['/images/gems/sapphire.svg'],
   },
+  {
+    no: '7',
+    gemType: 'Zircon',
+    carat: 3.43,
+    priceKyat: 800_000,
+    isSold: false,
+    images: ['/images/gems/zircon.svg'],
+  },
 ]

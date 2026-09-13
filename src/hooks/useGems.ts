@@ -9,7 +9,7 @@ async function loadGems(): Promise<Gem[]> {
   if (!SHEET_URL) {
     if (import.meta.env.DEV) {
       console.info(
-        '[Burma Gems] VITE_GEMS_SHEET_URL is not set. Serving mock inventory ' +
+        '[Myanmar Native Gems] VITE_GEMS_SHEET_URL is not set. Serving mock inventory ' +
           '(development only). Copy env.example to .env.local to use the live Sheet.',
       )
       return mockGems

@@ -1,8 +1,8 @@
 import { useParams } from 'react-router'
-import { FileText } from 'lucide-react'
 import { Button } from '../components/common/Button'
 import { Container } from '../components/common/Container'
 import { ErrorState } from '../components/common/ErrorState'
+import { GemCertificate } from '../components/gems/GemCertificate'
 import { GemGallery } from '../components/gems/GemGallery'
 import { provenance } from '../config/site'
 import { useGem } from '../hooks/useGems'
@@ -82,15 +82,11 @@ export function GemDetailPage() {
               </div>
 
               {gem.certificateUrl && (
-                <a
-                  href={gem.certificateUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 inline-flex items-center gap-2 text-sm underline decoration-gold underline-offset-4 transition-colors duration-200 hover:text-ruby"
-                >
-                  <FileText className="h-4 w-4" strokeWidth={1.5} aria-hidden />
-                  View certificate
-                </a>
+                <GemCertificate
+                  url={gem.certificateUrl}
+                  alt={gemAltText(gem)}
+                  className="mt-7"
+                />
               )}
 
               <div className="mt-9">

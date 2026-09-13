@@ -16,18 +16,41 @@ function Paragraph({ children, node }: ComponentProps<'p'> & ExtraProps) {
     significant[0].type === 'element' &&
     significant[0].tagName === 'img'
   if (imageOnly) return <>{children}</>
-  return <p className="mt-5">{children}</p>
+  return <p className="mt-5 max-w-[70ch]">{children}</p>
 }
 
 function heading(level: 2 | 3) {
   const Tag = `h${level}` as const
   const classes =
     level === 2
-      ? 'mt-12 font-serif text-2xl font-medium md:text-3xl'
-      : 'mt-8 font-serif text-xl font-medium'
+      ? 'mt-12 max-w-[70ch] font-serif text-2xl font-medium md:text-3xl'
+      : 'mt-8 max-w-[70ch] font-serif text-xl font-medium'
   return ({ children }: { children?: ReactNode }) => (
     <Tag className={classes}>{children}</Tag>
   )
+}
+
+/**
+ * The story's photos vary widely in orientation (tall mine/market portraits
+ * next to a wide valley panorama). Forcing them all into one fixed max-height
+ * used to squash portraits into odd narrow slivers. Instead, group images by
+ * orientation and size each group deliberately: portraits share one inset
+ * column width, the panorama breaks out to the full measure, everything else
+ * gets a moderate centered frame. Unlisted images fall back to "standard".
+ */
+const PORTRAIT_IMAGES = new Set([
+  'ruby-land-gate.jpg',
+  'mine-ore.jpg',
+  'rough-and-cut.jpg',
+  'earrings-rough.jpg',
+])
+const WIDE_IMAGES = new Set(['mogok-valley.jpg'])
+
+function imageTreatment(src?: string): 'portrait' | 'wide' | 'standard' {
+  const name = src?.split('/').pop() ?? ''
+  if (PORTRAIT_IMAGES.has(name)) return 'portrait'
+  if (WIDE_IMAGES.has(name)) return 'wide'
+  return 'standard'
 }
 
 /**
@@ -44,7 +67,7 @@ export function MarkdownContent({
   return (
     <div
       className={cn(
-        'max-w-[70ch] text-[1.0625rem] leading-relaxed',
+        'text-[1.0625rem] leading-relaxed',
         '[&>p:first-of-type]:text-lg',
         className,
       )}
@@ -65,18 +88,22 @@ export function MarkdownContent({
             </a>
           ),
           ul: ({ children }) => (
-            <ul className="mt-5 list-disc space-y-2 pl-5">{children}</ul>
+            <ul className="mt-5 max-w-[70ch] list-disc space-y-2 pl-5">
+              {children}
+            </ul>
           ),
           ol: ({ children }) => (
-            <ol className="mt-5 list-decimal space-y-2 pl-5">{children}</ol>
+            <ol className="mt-5 max-w-[70ch] list-decimal space-y-2 pl-5">
+              {children}
+            </ol>
           ),
           blockquote: ({ children }) => (
-            <blockquote className="mt-6 border-l-2 border-gold pl-5 font-serif text-xl italic leading-[1.4] text-ink-soft">
+            <blockquote className="mt-6 max-w-[70ch] border-l-2 border-gold pl-5 font-serif text-xl italic leading-[1.4] text-ink-soft">
               {children}
             </blockquote>
           ),
           table: ({ children }) => (
-            <div className="mt-6 overflow-x-auto">
+            <div className="mt-6 max-w-[70ch] overflow-x-auto">
               <table className="w-full border-collapse text-sm">
                 {children}
               </table>
@@ -92,22 +119,43 @@ export function MarkdownContent({
               {children}
             </td>
           ),
-          img: ({ src, alt, title }) => (
-            <figure className="mt-10">
-              <img
-                src={typeof src === 'string' ? src : undefined}
-                alt={alt ?? ''}
-                loading="lazy"
-                decoding="async"
-                className="mx-auto max-h-[560px] w-auto max-w-full"
-              />
-              {title && (
-                <figcaption className="mt-3 text-center text-sm text-ink-soft">
-                  {title}
-                </figcaption>
-              )}
-            </figure>
-          ),
+          img: ({ src, alt, title }) => {
+            const treatment = imageTreatment(
+              typeof src === 'string' ? src : undefined,
+            )
+            return (
+              <figure
+                className={cn(
+                  'mt-10',
+                  treatment === 'portrait' && 'max-w-[24rem]',
+                  treatment === 'standard' && 'max-w-2xl',
+                )}
+              >
+                <img
+                  src={typeof src === 'string' ? src : undefined}
+                  alt={alt ?? ''}
+                  loading="lazy"
+                  decoding="async"
+                  className={cn(
+                    'w-full',
+                    // Portraits and standard shots are cropped to one target
+                    // height (a 3:4 or 4:3 frame) so the essay keeps a
+                    // steady rhythm instead of some photos towering over
+                    // others. The panorama is already short relative to its
+                    // width, so it keeps its natural, uncropped aspect.
+                    treatment === 'portrait' && 'aspect-[3/4] object-cover',
+                    treatment === 'standard' && 'aspect-[4/3] object-cover',
+                    treatment === 'wide' && 'h-auto',
+                  )}
+                />
+                {title && (
+                  <figcaption className="mt-3 text-sm text-ink-soft">
+                    {title}
+                  </figcaption>
+                )}
+              </figure>
+            )
+          },
         }}
       >
         {content}

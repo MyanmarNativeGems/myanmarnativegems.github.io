@@ -34,7 +34,7 @@ const HEADER_ALIASES = {
 
 function devWarn(...args: unknown[]): void {
   if (import.meta.env?.DEV) {
-    console.warn('[Burma Gems inventory]', ...args)
+    console.warn('[Myanmar Native Gems inventory]', ...args)
   }
 }
 

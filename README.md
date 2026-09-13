@@ -1,4 +1,4 @@
-# Burma Gems
+# Myanmar Native Gems
 
 A curated online gallery of fine cut gemstones, live at
 **[burmagems.github.io](https://burmagems.github.io)**.

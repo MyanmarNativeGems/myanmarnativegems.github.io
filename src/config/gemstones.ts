@@ -11,7 +11,7 @@ export interface GemstoneCategory {
   keyword: string
   /** Education guide slug for this gemstone. */
   guideSlug: string
-  /** Tile / landing image. Sapphire uses placeholder art until a photo exists. */
+  /** Tile / landing image. Sapphire and zircon use placeholder art until a photo exists. */
   image: string
 }
 
@@ -36,5 +36,12 @@ export const gemstoneCategories: GemstoneCategory[] = [
     keyword: 'spinel',
     guideSlug: 'spinel',
     image: '/images/gems/spinel.jpg',
+  },
+  {
+    slug: 'zircon',
+    name: 'Zircon',
+    keyword: 'zircon',
+    guideSlug: 'zircon',
+    image: '/images/gems/zircon.svg',
   },
 ]

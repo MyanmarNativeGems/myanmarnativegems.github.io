@@ -20,7 +20,7 @@ export function ValuePropositions() {
     <section className="border-t border-line py-20 md:py-28">
       <Container className="grid gap-10 md:grid-cols-12">
         <h2 className="font-serif text-3xl font-medium md:col-span-4 md:text-4xl">
-          Why Burma Gems
+          Why Myanmar Native Gems
         </h2>
         <div className="md:col-span-8">
           {VALUES.map((value) => (

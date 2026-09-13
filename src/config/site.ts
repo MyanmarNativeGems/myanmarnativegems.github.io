@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: 'Burma Gems',
+  name: 'Myanmar Native Gems',
   tagline: 'Rare by Nature.',
   description:
     'A curated collection of natural, untreated cut gemstones from Mogok, Myanmar.',
