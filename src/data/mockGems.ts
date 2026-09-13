@@ -13,7 +13,7 @@ export const mockGems: Gem[] = [
     carat: 1.25,
     priceKyat: 4_800_000,
     isSold: false,
-    images: ['/images/gems/ruby.svg'],
+    images: ['/images/gems/ruby.jpg'],
   },
   {
     no: '2',
@@ -25,11 +25,11 @@ export const mockGems: Gem[] = [
   },
   {
     no: '3',
-    gemType: 'Jade',
+    gemType: 'Spinel',
     carat: 3.4,
     priceKyat: 2_900_000,
     isSold: true,
-    images: ['/images/gems/jade.svg'],
+    images: ['/images/gems/spinel.jpg'],
   },
   {
     no: '4',
@@ -37,7 +37,7 @@ export const mockGems: Gem[] = [
     carat: 1.8,
     priceKyat: 1_950_000,
     isSold: false,
-    images: ['/images/gems/spinel.svg', '/images/gems/ruby.svg'],
+    images: ['/images/gems/spinel.jpg', '/images/gems/ruby.jpg'],
   },
   {
     no: '5',

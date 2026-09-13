@@ -58,7 +58,7 @@ repository variable named `VITE_GEMS_SHEET_URL` overrides the default).
 | Column | Meaning | Notes |
 | --- | --- | --- |
 | `Item No` | Stable gem identifier | Required; rows without it are skipped. Drives the `/#/gem/<no>` URL |
-| `Gem Type` | Ruby, Sapphire, Jade, Spinel, ... | Free text; collection filters derive from it |
+| `Gem Type` | Ruby, Sapphire, Spinel, ... | Free text; collection filters derive from it |
 | `Carat (ct)` | Carat weight | `1.25` or `1.25ct` both work |
 | `Price (Kyat)` | Price in Kyat | `4,800,000` or `4800000` both work |
 | `Is Sold (Y/N)` | Sold flag | `Y`/`Yes`/`TRUE` = sold. `N`/`No`/`FALSE`/blank = available. Anything else is treated as sold |

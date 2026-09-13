@@ -18,7 +18,7 @@ Fractures reaching the surface of a stone can be filled with glass or resin to i
 
 ## Dyeing and impregnation
 
-Porous materials, notably jade, can be bleached, dyed, or impregnated with polymer. The trade grades jadeite accordingly: untreated, impregnated, and dyed categories carry very different values. Laboratory testing is the reliable way to distinguish them.
+Porous gem materials can be bleached, dyed, or impregnated with polymer to improve their apparent color and stability. These treatments change value substantially and are not always visible to the eye, which is why laboratory testing is the reliable way to identify them.
 
 ## Diffusion and irradiation
 

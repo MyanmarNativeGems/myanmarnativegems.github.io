@@ -9,7 +9,7 @@ export function GemstoneCategories() {
         <h2 className="font-serif text-3xl font-medium md:text-4xl">
           Browse by Gemstone
         </h2>
-        <div className="mt-10 grid grid-cols-2 gap-5 md:grid-cols-4 md:gap-8">
+        <div className="mt-10 grid grid-cols-3 gap-3 md:gap-8">
           {gemstoneCategories.map((category) => (
             <Link
               key={category.slug}
