@@ -219,10 +219,10 @@
   "gemstones": {
     "ruby": { "name": "ပတ္တမြား (Ruby)", "shortName": "ပတ္တမြား" },
     "sapphire": { "name": "နီလာ (Sapphire)", "shortName": "နီလာ" },
-    "peridot": { "name": "Peridot", "shortName": "Peridot" },
-    "tourmaline": { "name": "Tourmaline", "shortName": "Tourmaline" },
-    "spinel": { "name": "Spinel", "shortName": "Spinel" },
-    "zircon": { "name": "Zircon", "shortName": "Zircon" },
+    "peridot": { "name": "ပြောင်ခေါင်းစိမ်း (Peridot)", "shortName": "ပြောင်ခေါင်းစိမ်း" },
+    "tourmaline": { "name": "ဖရဲအူ (Tourmaline)", "shortName": "ဖရဲအူ" },
+    "spinel": { "name": "အညံ့ပန်း/နတ်ပန်း (Spinel)", "shortName": "အညံ့ပန်း/နတ်ပန်း" },
+    "zircon": { "name": "ဂေါ်မိတ် (Zircon)", "shortName": "ဂေါ်မိတ်" },
     "other": { "name": "အခြား", "shortName": "အခြား" }
   }
 }

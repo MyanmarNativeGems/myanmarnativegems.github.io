@@ -19,7 +19,9 @@ const LANGUAGES: Array<{
 }> = [
   { code: 'en', flag: '🇺🇸', short: 'ENG', label: 'English' },
   { code: 'my', flag: '🇲🇲', short: 'MYR', label: 'Myanmar' },
-  { code: 'zh', flag: '🇨🇳', short: 'ZH', label: 'Chinese' },
+  // Traditional Chinese content (see zh.json) — flagged as Taiwan rather
+  // than 🇨🇳, which is conventionally associated with Simplified Chinese.
+  { code: 'zh', flag: '🇹🇼', short: 'ZH', label: 'Chinese' },
 ]
 
 export function LanguageToggle({ className }: { className?: string }) {

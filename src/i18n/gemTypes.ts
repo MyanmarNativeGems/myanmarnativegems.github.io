@@ -15,12 +15,12 @@ const GEM_TYPE_NAMES: Partial<Record<Locale, Array<[keyword: string, name: strin
     ['sapphire', 'နီလာ'],
   ],
   zh: [
-    ['ruby', '红宝石'],
-    ['sapphire', '蓝宝石'],
-    ['peridot', '橄榄石'],
-    ['tourmaline', '碧玺'],
+    ['ruby', '紅寶石'],
+    ['sapphire', '藍寶石'],
+    ['peridot', '橄欖石'],
+    ['tourmaline', '碧璽'],
     ['spinel', '尖晶石'],
-    ['zircon', '锆石'],
+    ['zircon', '鋯石'],
   ],
 }
 

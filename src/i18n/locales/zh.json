@@ -1,228 +1,228 @@
 {
   "a11y": {
-    "skipToContent": "跳转至主要内容",
-    "primaryNav": "主导航",
-    "searchCollection": "搜索珍藏",
-    "openMenu": "打开菜单",
-    "closeMenu": "关闭菜单",
-    "languageSwitcher": "语言",
-    "switchLanguage": "切换至{{language}}"
+    "skipToContent": "跳轉至主要內容",
+    "primaryNav": "主導覽",
+    "searchCollection": "搜尋珍藏",
+    "openMenu": "開啟選單",
+    "closeMenu": "關閉選單",
+    "languageSwitcher": "語言",
+    "switchLanguage": "切換至{{language}}"
   },
   "nav": {
-    "gemstones": "宝石",
-    "inquire": "咨询"
+    "gemstones": "寶石",
+    "inquire": "諮詢"
   },
   "common": {
-    "ourStory": "我们的故事",
-    "exploreGemstones": "探索宝石",
-    "makeInquiry": "立即咨询",
-    "learnTitle": "了解宝石知识",
-    "learnSubtitle": "简明实用的宝石鉴赏指南，助您在购买前读懂一块宝石。",
-    "newStonesMessage": "我们正持续为珍藏增添新宝石。欢迎联系我们，了解即将上架的品项。"
+    "ourStory": "我們的故事",
+    "exploreGemstones": "探索寶石",
+    "makeInquiry": "立即諮詢",
+    "learnTitle": "了解寶石知識",
+    "learnSubtitle": "簡明實用的寶石鑑賞指南，助您在購買前讀懂一顆寶石。",
+    "newStonesMessage": "我們正持續為珍藏增添新寶石。歡迎與我們聯絡，了解即將上架的品項。"
   },
   "site": {
     "tagline": "天生珍稀。",
-    "description": "精心甄选的天然未经处理宝石珍藏，产自缅甸抹谷。"
+    "description": "精心甄選的天然未經處理寶石珍藏，產自緬甸抹谷。"
   },
   "footer": {
-    "gemstonesTitle": "宝石",
+    "gemstonesTitle": "寶石",
     "viewAll": "查看全部",
     "learnTitle": "了解更多",
-    "aboutTitle": "关于我们",
+    "aboutTitle": "關於我們",
     "instagram": "Instagram",
     "copyright": "© {{year}} {{brand}}",
-    "disclaimer": "所有宝石均为天然未经处理，产自缅甸抹谷。如需鉴定证书或了解库存情况，请与我们联系。"
+    "disclaimer": "所有寶石均為天然未經處理，產自緬甸抹谷。如需鑑定證書或了解庫存情況，請與我們聯絡。"
   },
   "home": {
     "hero": {
-      "imageAlt": "白色大理石母岩上的天然红宝石原石"
+      "imageAlt": "白色大理石母岩上的天然紅寶石原石"
     },
     "categories": {
-      "title": "按宝石种类浏览",
-      "imageAlt": "{{name}}宝石"
+      "title": "按寶石種類瀏覽",
+      "imageAlt": "{{name}}寶石"
     },
     "featured": {
-      "title": "精选宝石"
+      "title": "精選寶石"
     },
     "values": {
-      "title": "为何选择{{brand}}",
+      "title": "為何選擇{{brand}}",
       "minedInMogok": {
-        "title": "产自抹谷",
-        "body": "我们出售的每一颗宝石均产自缅甸北部的抹谷——这个以红宝石与尖晶石闻名数百年的山谷。"
+        "title": "產自抹谷",
+        "body": "我們出售的每一顆寶石均產自緬甸北部的抹谷——這個以紅寶石與尖晶石聞名數百年的山谷。"
       },
       "naturalUntreated": {
-        "title": "天然未经处理",
-        "body": "我们的宝石均为100%天然，未经加热或任何其他处理。您所见,即为宝石出土时的本来面貌。"
+        "title": "天然未經處理",
+        "body": "我們的寶石均為100%天然，未經加熱或任何其他處理。您所見，即為寶石出土時的本來面貌。"
       },
       "personalService": {
-        "title": "专属服务",
-        "body": "每一条咨询我们都亲自回复。如需更多照片、详细信息，或希望进一步沟通，欢迎随时联系。"
+        "title": "專屬服務",
+        "body": "每一條諮詢我們都親自回覆。如需更多照片、詳細資訊，或希望進一步溝通，歡迎隨時與我們聯絡。"
       }
     },
     "cta": {
-      "title": "对某颗宝石感兴趣吗？",
-      "body": "如需了解库存情况、获取更多照片，或对某颗宝石有任何疑问，欢迎与我们联系。"
+      "title": "對某顆寶石感興趣嗎？",
+      "body": "如需了解庫存情況、取得更多照片，或對某顆寶石有任何疑問，歡迎與我們聯絡。"
     }
   },
   "gems": {
     "title": "珍藏",
-    "subtitle": "精心甄选的单颗切割宝石珍藏。",
-    "noMatchMessage": "没有符合当前筛选条件的宝石。",
-    "clearFilters": "清除筛选"
+    "subtitle": "精心甄選的單顆切割寶石珍藏。",
+    "noMatchMessage": "沒有符合目前篩選條件的寶石。",
+    "clearFilters": "清除篩選"
   },
   "gemstonePage": {
-    "readGuide": "阅读{{name}}指南",
-    "inCollection": "珍藏中的宝石",
-    "noStonesMessage": "目前暂无{{name}}上架。新宝石将在入藏后陆续添加。",
+    "readGuide": "閱讀{{name}}指南",
+    "inCollection": "珍藏中的寶石",
+    "noStonesMessage": "目前暫無{{name}}上架。新寶石將在入藏後陸續新增。",
     "viewFullCollection": "查看完整珍藏"
   },
   "gem": {
     "sold": "已售出",
-    "available": "现货",
-    "priceOnRequest": "价格面议",
-    "gemTypeLabel": "宝石种类",
+    "available": "現貨",
+    "priceOnRequest": "價格面議",
+    "gemTypeLabel": "寶石種類",
     "caratLabel": "克拉重量",
-    "gemNoLabel": "宝石编号",
-    "originLabel": "产地",
-    "treatmentLabel": "处理情况",
-    "availabilityLabel": "库存状态",
-    "noLabel": "编号",
-    "stoneNoPrefix": "宝石编号 {{no}}"
+    "gemNoLabel": "寶石編號",
+    "originLabel": "產地",
+    "treatmentLabel": "處理情況",
+    "availabilityLabel": "庫存狀態",
+    "noLabel": "編號",
+    "stoneNoPrefix": "寶石編號 {{no}}"
   },
   "gemDetail": {
-    "loadingAria": "宝石加载中",
-    "notFoundTitle": "未找到该宝石",
-    "notFoundMessage": "编号为 {{no}} 的宝石不在当前珍藏中，可能已被移除，或链接已过期。",
+    "loadingAria": "寶石載入中",
+    "notFoundTitle": "未找到該寶石",
+    "notFoundMessage": "編號為 {{no}} 的寶石不在目前珍藏中，可能已被移除，或連結已過期。",
     "viewCollection": "查看珍藏",
-    "soldMessage": "此宝石已售出。如需类似宝石，欢迎向我们咨询。",
-    "viewAvailable": "查看现货宝石",
-    "inquireAbout": "咨询此宝石",
-    "specifications": "规格信息"
+    "soldMessage": "此寶石已售出。如需類似寶石，歡迎向我們諮詢。",
+    "viewAvailable": "查看現貨寶石",
+    "inquireAbout": "諮詢此寶石",
+    "specifications": "規格資訊"
   },
   "provenance": {
-    "originValue": "缅甸抹谷",
-    "treatmentValue": "无（天然，未经加热处理）"
+    "originValue": "緬甸抹谷",
+    "treatmentValue": "無（天然，未經加熱處理）"
   },
   "filters": {
-    "groupLabel": "按宝石种类筛选",
+    "groupLabel": "按寶石種類篩選",
     "all": "全部",
-    "searchLabel": "按种类或编号搜索",
-    "searchPlaceholder": "搜索种类或编号",
-    "availableOnly": "仅显示现货",
+    "searchLabel": "按種類或編號搜尋",
+    "searchPlaceholder": "搜尋種類或編號",
+    "availableOnly": "僅顯示現貨",
     "sortLabel": "排序",
     "sort": {
-      "no": "宝石编号",
-      "caratAsc": "克拉：从低到高",
-      "caratDesc": "克拉：从高到低",
-      "priceAsc": "价格：从低到高",
-      "priceDesc": "价格：从高到低"
+      "no": "寶石編號",
+      "caratAsc": "克拉：從低到高",
+      "caratDesc": "克拉：從高到低",
+      "priceAsc": "價格：從低到高",
+      "priceDesc": "價格：從高到低"
     }
   },
   "gallery": {
-    "viewPhoto": "查看第 {{n}} 张照片"
+    "viewPhoto": "查看第 {{n}} 張照片"
   },
   "certificate": {
-    "view": "查看鉴定证书",
-    "hide": "隐藏鉴定证书",
-    "openNewTab": "在新标签页中打开证书",
-    "openAria": "在新标签页中打开完整鉴定证书",
-    "altPrefix": "{{alt}}的鉴定证书",
-    "tapToView": "点击查看完整尺寸。"
+    "view": "查看鑑定證書",
+    "hide": "隱藏鑑定證書",
+    "openNewTab": "在新分頁中開啟證書",
+    "openAria": "在新分頁中開啟完整鑑定證書",
+    "altPrefix": "{{alt}}的鑑定證書",
+    "tapToView": "點擊查看完整尺寸。"
   },
   "contact": {
-    "title": "宝石咨询",
-    "subtitle": "请告诉我们您感兴趣的宝石，或描述您想寻找的类型。我们会亲自回复每一条咨询。",
-    "regarding": "关于：{{gemLabel}}",
-    "preferEmail": "更习惯用邮件联系？请直接写信至",
+    "title": "寶石諮詢",
+    "subtitle": "請告訴我們您感興趣的寶石，或描述您想尋找的類型。我們會親自回覆每一條諮詢。",
+    "regarding": "關於：{{gemLabel}}",
+    "preferEmail": "更習慣用電子郵件聯絡？請直接寫信至",
     "form": {
       "name": "姓名",
-      "email": "电子邮箱",
-      "phone": "电话号码（选填）",
-      "gemstone": "宝石",
-      "generalInquiry": "一般咨询",
-      "message": "留言内容",
-      "sendInquiry": "发送咨询",
-      "sending": "发送中…"
+      "email": "電子郵件",
+      "phone": "電話號碼（選填）",
+      "gemstone": "寶石",
+      "generalInquiry": "一般諮詢",
+      "message": "留言內容",
+      "sendInquiry": "傳送諮詢",
+      "sending": "傳送中…"
     },
     "validation": {
-      "name": "请填写您的姓名。",
-      "email": "请填写有效的电子邮箱地址。",
-      "message": "请填写留言内容。"
+      "name": "請填寫您的姓名。",
+      "email": "請填寫有效的電子郵件地址。",
+      "message": "請填寫留言內容。"
     },
     "success": {
-      "title": "咨询已发送",
-      "body": "谢谢您，{{name}}。我们已收到您的咨询，通常会在一到两天内亲自回复。",
-      "fallbackName": "客人",
-      "sendAnother": "发送另一条咨询"
+      "title": "諮詢已送出",
+      "body": "謝謝您，{{name}}。我們已收到您的諮詢，通常會在一到兩天內親自回覆。",
+      "fallbackName": "貴賓",
+      "sendAnother": "傳送另一則諮詢"
     },
     "notConfigured": {
-      "title": "还差一步",
-      "body": "此页面暂未设置自动发送功能，因此您的咨询不会自动送出。请点击下方按钮，系统将在您的邮件应用中打开一份预填草稿，请检查后点击发送。"
+      "title": "還差一步",
+      "body": "此頁面尚未設定自動傳送功能，因此您的諮詢不會自動送出。請點擊下方按鈕，系統將在您的電子郵件應用程式中開啟一份預先填寫的草稿，請檢查後點擊傳送。"
     },
     "failed": {
-      "title": "出现了一些问题",
-      "body": "您的咨询未能自动发送。请改用下方按钮通过电子邮件发送，对由此带来的不便，我们深表歉意。"
+      "title": "發生了一些問題",
+      "body": "您的諮詢未能自動傳送。請改用下方按鈕透過電子郵件傳送，造成的不便，我們深感抱歉。"
     },
-    "openEmailDraft": "打开邮件草稿",
+    "openEmailDraft": "開啟郵件草稿",
     "mailto": {
-      "subjectWithGem": "宝石咨询：{{gemLabel}}",
-      "subjectGeneral": "宝石咨询",
+      "subjectWithGem": "寶石諮詢：{{gemLabel}}",
+      "subjectGeneral": "寶石諮詢",
       "name": "姓名",
-      "email": "电子邮箱",
-      "phone": "电话",
-      "gemstone": "宝石"
+      "email": "電子郵件",
+      "phone": "電話",
+      "gemstone": "寶石"
     }
   },
   "notFound": {
-    "title": "页面未找到",
-    "message": "您访问的页面不存在，或可能已被移动。",
-    "backHome": "返回首页"
+    "title": "找不到頁面",
+    "message": "您造訪的頁面不存在，或可能已被移動。",
+    "backHome": "返回首頁"
   },
   "errorState": {
-    "title": "目前暂时无法加载宝石珍藏。",
-    "subtitle": "请稍后再试。",
-    "retry": "重试"
+    "title": "目前暫時無法載入寶石珍藏。",
+    "subtitle": "請稍後再試。",
+    "retry": "重試"
   },
   "loading": {
-    "gemstonesAria": "宝石加载中"
+    "gemstonesAria": "寶石載入中"
   },
   "meta": {
     "home": {
-      "title": "精致切割宝石",
-      "description": "精心甄选的天然未经处理宝石珍藏，产自缅甸抹谷，欢迎私下垂询。"
+      "title": "精緻切割寶石",
+      "description": "精心甄選的天然未經處理寶石珍藏，產自緬甸抹谷，歡迎私下垂詢。"
     },
     "gems": {
       "title": "珍藏",
-      "description": "浏览产自缅甸抹谷的天然未经处理宝石完整珍藏。"
+      "description": "瀏覽產自緬甸抹谷的天然未經處理寶石完整珍藏。"
     },
     "gemstoneCategory": {
-      "descriptionFallback": "产自缅甸抹谷的天然未经处理{{name}}。"
+      "descriptionFallback": "產自緬甸抹谷的天然未經處理{{name}}。"
     },
     "gemDetail": {
-      "description": "一颗产自缅甸抹谷的天然未经处理宝石。如需了解库存情况及详情，请与我们联系。"
+      "description": "一顆產自緬甸抹谷的天然未經處理寶石。如需了解庫存情況及詳情，請與我們聯絡。"
     },
     "education": {
-      "title": "了解宝石知识",
-      "description": "简明实用的宝石鉴赏指南，助您在购买前读懂一块宝石。"
+      "title": "了解寶石知識",
+      "description": "簡明實用的寶石鑑賞指南，助您在購買前讀懂一顆寶石。"
     },
     "about": {
-      "title": "关于我们"
+      "title": "關於我們"
     },
     "contact": {
-      "title": "联系我们",
-      "description": "请告诉我们您感兴趣的宝石，或描述您想寻找的类型。我们会亲自回复每一条咨询。"
+      "title": "聯絡我們",
+      "description": "請告訴我們您感興趣的寶石，或描述您想尋找的類型。我們會親自回覆每一條諮詢。"
     },
     "notFound": {
-      "title": "页面未找到"
+      "title": "找不到頁面"
     }
   },
   "gemstones": {
-    "ruby": { "name": "红宝石 (Ruby)", "shortName": "红宝石" },
-    "sapphire": { "name": "蓝宝石 (Sapphire)", "shortName": "蓝宝石" },
-    "peridot": { "name": "橄榄石 (Peridot)", "shortName": "橄榄石" },
-    "tourmaline": { "name": "碧玺 (Tourmaline)", "shortName": "碧玺" },
+    "ruby": { "name": "紅寶石 (Ruby)", "shortName": "紅寶石" },
+    "sapphire": { "name": "藍寶石 (Sapphire)", "shortName": "藍寶石" },
+    "peridot": { "name": "橄欖石 (Peridot)", "shortName": "橄欖石" },
+    "tourmaline": { "name": "碧璽 (Tourmaline)", "shortName": "碧璽" },
     "spinel": { "name": "尖晶石 (Spinel)", "shortName": "尖晶石" },
-    "zircon": { "name": "锆石 (Zircon)", "shortName": "锆石" },
+    "zircon": { "name": "鋯石 (Zircon)", "shortName": "鋯石" },
     "other": { "name": "其他", "shortName": "其他" }
   }
 }
