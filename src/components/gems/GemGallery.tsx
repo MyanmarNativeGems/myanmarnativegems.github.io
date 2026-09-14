@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { cn } from '../../lib/utils'
 import { GemImage } from './GemImage'
 
@@ -7,6 +8,7 @@ import { GemImage } from './GemImage'
  * stone has more than one image.
  */
 export function GemGallery({ images, alt }: { images: string[]; alt: string }) {
+  const { t } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(0)
 
   return (
@@ -24,7 +26,7 @@ export function GemGallery({ images, alt }: { images: string[]; alt: string }) {
               key={image}
               type="button"
               onClick={() => setActiveIndex(index)}
-              aria-label={`View photo ${index + 1}`}
+              aria-label={t('gallery.viewPhoto', { n: index + 1 })}
               aria-pressed={index === activeIndex}
               className={cn(
                 'w-20 border transition-colors duration-200',

@@ -31,10 +31,19 @@ export function selectFeaturedGems(gems: Gem[], count = 4): Gem[] {
   return gems.filter((gem) => !gem.isSold).sort(compareGemNo).slice(0, count)
 }
 
-/** Descriptive alt text for a gem image. */
-export function gemAltText(gem: Gem): string {
+/**
+ * Descriptive alt text for a gem image.
+ * `typeLabel` and `stoneNoText` are pre-translated by the caller (gem
+ * type names and the "Stone No." phrasing are locale-dependent; utils.ts
+ * stays free of i18n dependencies).
+ */
+export function gemAltText(
+  gem: Gem,
+  typeLabel: string,
+  stoneNoText: string,
+): string {
   const carat = gem.carat !== undefined ? `, ${formatCarat(gem.carat)}` : ''
-  return `${gem.gemType}${carat}, stone No. ${gem.no}`
+  return `${typeLabel}${carat}, ${stoneNoText}`
 }
 
 export type GemSort =

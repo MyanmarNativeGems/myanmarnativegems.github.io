@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { cn, gemGridClass, type GemGridVariant } from '../../lib/utils'
 
 export function GemCardSkeleton() {
@@ -20,11 +21,12 @@ export function GemGridSkeleton({
   variant?: GemGridVariant
   className?: string
 }) {
+  const { t } = useTranslation()
   return (
     <div
       className={cn(gemGridClass[variant], className)}
       role="status"
-      aria-label="Loading gemstones"
+      aria-label={t('loading.gemstonesAria')}
     >
       {Array.from({ length: count }, (_, index) => (
         <GemCardSkeleton key={index} />

@@ -1,19 +1,38 @@
 @import '@fontsource-variable/inter';
 @import '@fontsource-variable/cormorant-garamond';
+@import '@fontsource/noto-sans-myanmar';
+@import '@fontsource/noto-serif-myanmar';
 @import 'tailwindcss';
 
 /*
  * Myanmar Native Gems visual system.
  * One locked light theme: warm ivory ground, dark ink typography,
  * gold and ruby used sparingly. Sharp corners everywhere.
+ *
+ * Neither Inter nor Cormorant Garamond covers Myanmar Unicode, so Noto
+ * Sans/Serif Myanmar are appended to the same two font roles. Latin text
+ * keeps rendering in Inter/Cormorant exactly as before; only Burmese runs
+ * fall through to the Noto faces, so the English site is unaffected.
+ *
+ * Chinese intentionally does NOT get a matching self-hosted Noto Sans/Serif
+ * SC here: a full CJK charset ships as 100+ unicode-range-scoped @font-face
+ * rules, and unlike the font *files* (fetched only for ranges actually
+ * used), those declarations all live in the CSS itself — self-hosting one
+ * inflated index.css from ~32kB to ~270kB for every visitor, English and
+ * Burmese included, to cover a script that (unlike Myanmar) already has
+ * solid, good-looking system font coverage on every mainstream OS. Chinese
+ * text falls through to the system-ui/sans-serif and Georgia/serif
+ * fallbacks below, which resolve to the platform's own CJK font (e.g.
+ * PingFang SC, Microsoft YaHei, Noto Sans CJK) — verified to render
+ * correctly, no tofu.
  */
 @theme {
   --font-sans:
-    'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
-    sans-serif;
+    'Inter Variable', 'Noto Sans Myanmar', ui-sans-serif, system-ui,
+    -apple-system, 'Segoe UI', sans-serif;
   --font-serif:
-    'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia,
-    'Times New Roman', serif;
+    'Cormorant Garamond Variable', 'Cormorant Garamond', 'Noto Serif Myanmar',
+    Georgia, 'Times New Roman', serif;
 
   --color-ivory: #faf8f4;
   --color-ivory-deep: #f2eee6;
@@ -46,5 +65,17 @@
     html {
       scroll-behavior: smooth;
     }
+  }
+
+  /*
+   * Myanmar script stacks tone marks and medials vertically, so it needs
+   * more breathing room than Latin text and wraps at syllable boundaries
+   * rather than spaces. This is a baseline; explicit `leading-*` utilities
+   * elsewhere still take precedence via Tailwind's layer order.
+   */
+  :lang(my) {
+    line-height: 1.65;
+    overflow-wrap: break-word;
+    word-break: normal;
   }
 }

@@ -20,15 +20,42 @@ export interface InquiryResult {
   mailtoUrl: string
 }
 
-export function buildInquiryMailto(draft: InquiryDraft): string {
-  const subject = draft.gemLabel
+/**
+ * Field labels for the plain-text mailto body. This module has no i18n
+ * dependency of its own — the caller (ContactPage) passes already
+ * translated labels; these English defaults just keep the functions usable
+ * (and every existing call site working) without them.
+ */
+export interface InquiryMailtoLabels {
+  name: string
+  email: string
+  phone: string
+  gemstone: string
+}
+
+const DEFAULT_MAILTO_LABELS: InquiryMailtoLabels = {
+  name: 'Name',
+  email: 'Email',
+  phone: 'Phone',
+  gemstone: 'Gemstone',
+}
+
+function defaultSubject(draft: InquiryDraft): string {
+  return draft.gemLabel
     ? `Gemstone inquiry: ${draft.gemLabel}`
     : 'Gemstone inquiry'
+}
+
+export function buildInquiryMailto(
+  draft: InquiryDraft,
+  subject: string = defaultSubject(draft),
+  labels: InquiryMailtoLabels = DEFAULT_MAILTO_LABELS,
+): string {
   const lines = [
-    `Name: ${draft.name}`,
-    `Email: ${draft.email}`,
-    draft.phone ? `Phone: ${draft.phone}` : '',
-    draft.gemLabel ? `Gemstone: ${draft.gemLabel}` : '',
+    `${labels.name}: ${draft.name}`,
+    `${labels.email}: ${draft.email}`,
+    draft.phone ? `${labels.phone}: ${draft.phone}` : '',
+    draft.gemLabel ? `${labels.gemstone}: ${draft.gemLabel}` : '',
     '',
     draft.message,
   ].filter((line, index) => line !== '' || index >= 4)
@@ -82,8 +109,10 @@ const ENDPOINT_URL = import.meta.env.VITE_INQUIRY_ENDPOINT_URL as
  */
 export async function submitInquiry(
   draft: InquiryDraft,
+  subject?: string,
+  labels?: InquiryMailtoLabels,
 ): Promise<InquiryResult> {
-  const mailtoUrl = buildInquiryMailto(draft)
+  const mailtoUrl = buildInquiryMailto(draft, subject, labels)
 
   if (!ENDPOINT_URL) {
     return { delivered: false, attempted: false, mailtoUrl }

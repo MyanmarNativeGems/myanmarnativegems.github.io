@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { NavLink } from 'react-router'
+import { useTranslation } from 'react-i18next'
 import { Container } from '../common/Container'
 import { cn } from '../../lib/utils'
 import { navLinks } from '../../config/navigation'
+import { LanguageToggle } from './LanguageToggle'
 
 export function MobileNavigation({
   open,
@@ -11,6 +13,7 @@ export function MobileNavigation({
   open: boolean
   onClose: () => void
 }) {
+  const { t } = useTranslation()
   const firstLinkRef = useRef<HTMLAnchorElement>(null)
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export function MobileNavigation({
   return (
     <nav
       id="mobile-navigation"
-      aria-label="Primary"
+      aria-label={t('a11y.primaryNav')}
       className="border-t border-line bg-ivory lg:hidden"
     >
       <Container className="flex flex-col py-4">
@@ -44,12 +47,16 @@ export function MobileNavigation({
               )
             }
           >
-            {link.label}
+            {t(link.labelKey)}
           </NavLink>
         ))}
-        <NavLink to="/contact" className="py-3.5 text-base text-ink">
-          Inquire
+        <NavLink
+          to="/contact"
+          className="border-b border-line py-3.5 text-base text-ink"
+        >
+          {t('nav.inquire')}
         </NavLink>
+        <LanguageToggle className="pt-4" />
       </Container>
     </nav>
   )

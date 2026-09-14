@@ -1,5 +1,6 @@
 import { useId, useState } from 'react'
 import { ChevronDown, FileText } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { toDirectImageUrl } from '../../lib/googleSheets'
 import { cn } from '../../lib/utils'
 
@@ -19,6 +20,7 @@ export function GemCertificate({
   alt: string
   className?: string
 }) {
+  const { t } = useTranslation()
   const [open, setOpen] = useState(false)
   const [failed, setFailed] = useState(false)
   const panelId = useId()
@@ -33,7 +35,7 @@ export function GemCertificate({
         className="inline-flex items-center gap-2 text-sm underline decoration-gold underline-offset-4 transition-colors duration-200 hover:text-ruby"
       >
         <FileText className="h-4 w-4" strokeWidth={1.5} aria-hidden />
-        {open ? 'Hide certificate' : 'View certificate'}
+        {open ? t('certificate.hide') : t('certificate.view')}
         <ChevronDown
           className={cn(
             'h-3.5 w-3.5 transition-transform duration-200',
@@ -53,7 +55,7 @@ export function GemCertificate({
               rel="noopener noreferrer"
               className="text-sm underline decoration-gold underline-offset-4 transition-colors duration-200 hover:text-ruby"
             >
-              Open certificate in a new tab
+              {t('certificate.openNewTab')}
             </a>
           ) : (
             <>
@@ -61,7 +63,7 @@ export function GemCertificate({
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Open the full laboratory certificate in a new tab"
+                aria-label={t('certificate.openAria')}
                 className={cn(
                   'block border border-line bg-ivory-deep p-3',
                   'transition-colors duration-200 hover:border-ink-soft',
@@ -69,14 +71,16 @@ export function GemCertificate({
               >
                 <img
                   src={toDirectImageUrl(url)}
-                  alt={`Laboratory certificate for ${alt}`}
+                  alt={t('certificate.altPrefix', { alt })}
                   decoding="async"
                   referrerPolicy="no-referrer"
                   onError={() => setFailed(true)}
                   className="mx-auto h-auto max-h-[30rem] w-auto max-w-full object-contain"
                 />
               </a>
-              <p className="mt-2 text-xs text-ink-soft">Tap to view full size.</p>
+              <p className="mt-2 text-xs text-ink-soft">
+                {t('certificate.tapToView')}
+              </p>
             </>
           )}
         </div>

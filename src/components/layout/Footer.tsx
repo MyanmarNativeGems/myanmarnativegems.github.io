@@ -1,8 +1,10 @@
 import { Link } from 'react-router'
+import { useTranslation } from 'react-i18next'
 import { Container } from '../common/Container'
 import { gemstoneCategories } from '../../config/gemstones'
 import { siteConfig } from '../../config/site'
 import { listContent } from '../../lib/markdown'
+import type { Locale } from '../../i18n'
 
 function FooterColumn({
   title,
@@ -33,7 +35,9 @@ function FooterColumn({
 }
 
 export function Footer() {
-  const guides = listContent('education')
+  const { t, i18n } = useTranslation()
+  const locale = i18n.language as Locale
+  const guides = listContent('education', locale)
 
   return (
     <footer className="border-t border-line bg-ivory-deep">
@@ -43,7 +47,7 @@ export function Footer() {
             {siteConfig.name}
           </p>
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-            {siteConfig.description}
+            {t('site.description')}
           </p>
           <a
             href={`mailto:${siteConfig.email}`}
@@ -58,24 +62,24 @@ export function Footer() {
               rel="noopener noreferrer"
               className="mt-2 block text-sm text-ink-soft transition-colors duration-200 hover:text-ink"
             >
-              Instagram
+              {t('footer.instagram')}
             </a>
           )}
         </div>
 
         <FooterColumn
-          title="Gemstones"
+          title={t('footer.gemstonesTitle')}
           links={[
             ...gemstoneCategories.map((category) => ({
               to: `/${category.slug}`,
-              label: category.name,
+              label: t(`gemstones.${category.slug}.name`),
             })),
-            { to: '/gems', label: 'View All' },
+            { to: '/gems', label: t('footer.viewAll') },
           ]}
         />
 
         <FooterColumn
-          title="Learn"
+          title={t('footer.learnTitle')}
           links={guides.map((guide) => ({
             to: `/education/${guide.slug}`,
             label: guide.frontmatter.title,
@@ -83,10 +87,10 @@ export function Footer() {
         />
 
         <FooterColumn
-          title="About"
+          title={t('footer.aboutTitle')}
           links={[
-            { to: '/about', label: 'Our Story' },
-            { to: '/contact', label: 'Inquire' },
+            { to: '/about', label: t('common.ourStory') },
+            { to: '/contact', label: t('nav.inquire') },
           ]}
         />
       </Container>
@@ -94,12 +98,12 @@ export function Footer() {
       <div className="border-t border-line">
         <Container className="flex flex-col gap-2 py-6 text-xs text-ink-soft md:flex-row md:items-center md:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}
+            {t('footer.copyright', {
+              year: new Date().getFullYear(),
+              brand: siteConfig.name,
+            })}
           </p>
-          <p>
-            All stones are natural, untreated, and mined in Mogok, Myanmar.
-            Contact us for certification and availability.
-          </p>
+          <p>{t('footer.disclaimer')}</p>
         </Container>
       </div>
     </footer>

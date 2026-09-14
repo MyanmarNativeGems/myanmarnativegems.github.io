@@ -1,3 +1,11 @@
+/**
+ * Non-translatable site identity. `tagline` and `description` are kept
+ * here as the canonical English source, but the strings actually shown to
+ * visitors live in src/i18n/locales/{en,my}.json under `site.tagline` /
+ * `site.description` (see Hero.tsx and Footer.tsx) so they can be
+ * translated; `name`, `url`, and `email` must never be translated and are
+ * used directly wherever the brand appears.
+ */
 export const siteConfig = {
   name: 'Myanmar Native Gems',
   tagline: 'Rare by Nature.',
@@ -12,7 +20,9 @@ export const siteConfig = {
 /**
  * Store-wide provenance, stated by the owner: every stone in the collection
  * is mined in Mogok, Myanmar, and is 100% natural with no heat or other
- * treatments. Shown on every gem detail page.
+ * treatments. The English values here are canonical; the localized strings
+ * shown on the gem detail page live under `provenance.*` in the i18n
+ * locale files.
  */
 export const provenance = {
   origin: 'Mogok, Myanmar',

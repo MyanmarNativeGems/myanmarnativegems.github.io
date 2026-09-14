@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { Menu, Search, X } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { Container } from '../common/Container'
 import { navLinks } from '../../config/navigation'
 import { siteConfig } from '../../config/site'
 import { cn } from '../../lib/utils'
+import { LanguageToggle } from './LanguageToggle'
 import { MobileNavigation } from './MobileNavigation'
 
 export function Header() {
+  const { t } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
 
@@ -21,17 +24,25 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-ivory">
-      <Container className="flex h-16 items-center justify-between gap-6 md:h-[72px]">
+      {/*
+        min-h (not a fixed h-16/h-[72px]) plus flex-wrap: Burmese nav
+        labels run noticeably longer than their English source ("Gemstones"
+        -> "ကျောက်မျက်ရတနာများ"), so the row can need a second line at
+        narrower desktop widths. A fixed-height row would clip or overlap
+        the content below it when that happens; min-height lets the header
+        grow instead.
+      */}
+      <Container className="flex min-h-16 flex-wrap items-center justify-between gap-x-6 gap-y-2 py-2 md:min-h-[72px]">
         <Link
           to="/"
-          className="font-serif text-lg font-semibold uppercase tracking-[0.22em] md:text-xl"
+          className="shrink-0 whitespace-nowrap font-serif text-lg font-semibold uppercase tracking-[0.22em] md:text-xl"
         >
           {siteConfig.name}
         </Link>
 
         <nav
-          aria-label="Primary"
-          className="hidden items-center gap-7 lg:flex"
+          aria-label={t('a11y.primaryNav')}
+          className="hidden flex-wrap items-center justify-end gap-x-5 gap-y-2 lg:flex"
         >
           {navLinks.map((link) => (
             <NavLink
@@ -39,28 +50,23 @@ export function Header() {
               to={link.to}
               className={({ isActive }) =>
                 cn(
-                  'text-sm transition-colors duration-200',
+                  'whitespace-nowrap text-sm transition-colors duration-200',
                   isActive
                     ? 'text-ink underline decoration-gold decoration-1 underline-offset-8'
                     : 'text-ink-soft hover:text-ink',
                 )
               }
             >
-              {link.label}
+              {t(link.labelKey)}
             </NavLink>
           ))}
-          <Link
-            to="/contact"
-            className="inline-flex h-9 items-center border border-ink px-5 text-xs font-medium uppercase tracking-[0.14em] transition-colors duration-200 hover:border-ruby hover:text-ruby"
-          >
-            Inquire
-          </Link>
+          <LanguageToggle className="shrink-0" />
         </nav>
 
         <div className="flex items-center gap-1 lg:hidden">
           <Link
             to="/gems"
-            aria-label="Search the collection"
+            aria-label={t('a11y.searchCollection')}
             className="flex h-10 w-10 items-center justify-center text-ink"
           >
             <Search className="h-5 w-5" strokeWidth={1.5} aria-hidden />
@@ -70,7 +76,7 @@ export function Header() {
             onClick={() => setMenuOpen((open) => !open)}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={t(menuOpen ? 'a11y.closeMenu' : 'a11y.openMenu')}
             className="flex h-10 w-10 items-center justify-center text-ink"
           >
             {menuOpen ? (

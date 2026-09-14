@@ -1,20 +1,23 @@
 import { useParams } from 'react-router'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../components/common/Button'
 import { Container } from '../components/common/Container'
 import { ErrorState } from '../components/common/ErrorState'
 import { GemCertificate } from '../components/gems/GemCertificate'
 import { GemGallery } from '../components/gems/GemGallery'
-import { provenance } from '../config/site'
 import { useGem } from '../hooks/useGems'
+import { usePageMeta } from '../hooks/usePageMeta'
 import { formatKyat } from '../lib/currency'
 import { formatCarat, gemAltText } from '../lib/utils'
+import { translateGemType } from '../i18n/gemTypes'
+import type { Locale } from '../i18n'
 
-function DetailSkeleton() {
+function DetailSkeleton({ ariaLabel }: { ariaLabel: string }) {
   return (
     <div
       className="grid animate-pulse gap-10 motion-reduce:animate-none md:grid-cols-12 md:gap-14"
       role="status"
-      aria-label="Loading gemstone"
+      aria-label={ariaLabel}
     >
       <div className="md:col-span-7">
         <div className="aspect-square bg-ivory-deep" />
@@ -30,38 +33,54 @@ function DetailSkeleton() {
 }
 
 export function GemDetailPage() {
+  const { t, i18n } = useTranslation()
+  const locale = i18n.language as Locale
   const { no } = useParams()
   const { gem, isLoading, error, refetch } = useGem(no)
+  const typeLabel = gem ? translateGemType(gem.gemType, locale) : undefined
+
+  usePageMeta(
+    typeLabel && gem
+      ? `${typeLabel} ${t('gem.stoneNoPrefix', { no: gem.no })}`
+      : t('gemDetail.notFoundTitle'),
+    t('meta.gemDetail.description'),
+  )
 
   return (
     <div className="py-12 md:py-20">
       <Container>
         {isLoading ? (
-          <DetailSkeleton />
+          <DetailSkeleton ariaLabel={t('gemDetail.loadingAria')} />
         ) : error ? (
           <ErrorState onRetry={() => void refetch()} />
         ) : !gem ? (
           <div className="mx-auto max-w-xl py-16 text-center">
             <h1 className="font-serif text-3xl font-medium md:text-4xl">
-              Stone not found
+              {t('gemDetail.notFoundTitle')}
             </h1>
             <p className="mt-4 leading-relaxed text-ink-soft">
-              Gem No. {no} is not part of the current collection. It may have
-              been removed or the link may be out of date.
+              {t('gemDetail.notFoundMessage', { no })}
             </p>
             <Button to="/gems" variant="outline" className="mt-8">
-              View the Collection
+              {t('gemDetail.viewCollection')}
             </Button>
           </div>
         ) : (
           <div className="grid gap-10 md:grid-cols-12 md:gap-14">
             <div className="md:col-span-7">
-              <GemGallery images={gem.images} alt={gemAltText(gem)} />
+              <GemGallery
+                images={gem.images}
+                alt={gemAltText(
+                  gem,
+                  typeLabel ?? gem.gemType,
+                  t('gem.stoneNoPrefix', { no: gem.no }),
+                )}
+              />
             </div>
 
             <div className="md:col-span-5">
               <h1 className="font-serif text-4xl font-medium md:text-5xl">
-                {gem.gemType}
+                {typeLabel}
               </h1>
               {gem.carat !== undefined && (
                 <p className="mt-2 text-lg text-ink-soft">
@@ -72,19 +91,25 @@ export function GemDetailPage() {
               <div className="mt-7">
                 {gem.isSold ? (
                   <p className="text-sm font-medium uppercase tracking-[0.14em] text-ink-soft">
-                    Sold
+                    {t('gem.sold')}
                   </p>
                 ) : gem.priceKyat !== undefined ? (
                   <p className="text-2xl">{formatKyat(gem.priceKyat)}</p>
                 ) : (
-                  <p className="text-lg text-ink-soft">Price on request</p>
+                  <p className="text-lg text-ink-soft">
+                    {t('gem.priceOnRequest')}
+                  </p>
                 )}
               </div>
 
               {gem.certificateUrl && (
                 <GemCertificate
                   url={gem.certificateUrl}
-                  alt={gemAltText(gem)}
+                  alt={gemAltText(
+                    gem,
+                    typeLabel ?? gem.gemType,
+                    t('gem.stoneNoPrefix', { no: gem.no }),
+                  )}
                   className="mt-7"
                 />
               )}
@@ -93,50 +118,51 @@ export function GemDetailPage() {
                 {gem.isSold ? (
                   <>
                     <p className="max-w-sm text-sm leading-relaxed text-ink-soft">
-                      This stone has been sold. Similar stones may be
-                      available on request.
+                      {t('gemDetail.soldMessage')}
                     </p>
                     <Button to="/gems" variant="outline" className="mt-5">
-                      View Available Gems
+                      {t('gemDetail.viewAvailable')}
                     </Button>
                   </>
                 ) : (
                   <Button to={`/contact?gem=${gem.no}`} variant="ruby">
-                    Inquire About This Gem
+                    {t('gemDetail.inquireAbout')}
                   </Button>
                 )}
               </div>
 
               <div className="mt-12">
                 <h2 className="text-xs font-medium uppercase tracking-[0.16em] text-gold-deep">
-                  Specifications
+                  {t('gemDetail.specifications')}
                 </h2>
                 <dl className="mt-4 divide-y divide-line border-t border-line">
                   <div className="flex justify-between gap-6 py-3 text-sm">
-                    <dt className="text-ink-soft">Gem Type</dt>
-                    <dd>{gem.gemType}</dd>
+                    <dt className="text-ink-soft">{t('gem.gemTypeLabel')}</dt>
+                    <dd>{typeLabel}</dd>
                   </div>
                   {gem.carat !== undefined && (
                     <div className="flex justify-between gap-6 py-3 text-sm">
-                      <dt className="text-ink-soft">Carat</dt>
+                      <dt className="text-ink-soft">{t('gem.caratLabel')}</dt>
                       <dd>{formatCarat(gem.carat)}</dd>
                     </div>
                   )}
                   <div className="flex justify-between gap-6 py-3 text-sm">
-                    <dt className="text-ink-soft">Gem No.</dt>
+                    <dt className="text-ink-soft">{t('gem.gemNoLabel')}</dt>
                     <dd>{gem.no}</dd>
                   </div>
                   <div className="flex justify-between gap-6 py-3 text-sm">
-                    <dt className="text-ink-soft">Origin</dt>
-                    <dd>{provenance.origin}</dd>
+                    <dt className="text-ink-soft">{t('gem.originLabel')}</dt>
+                    <dd>{t('provenance.originValue')}</dd>
                   </div>
                   <div className="flex justify-between gap-6 py-3 text-sm">
-                    <dt className="text-ink-soft">Treatment</dt>
-                    <dd>{provenance.treatment}</dd>
+                    <dt className="text-ink-soft">{t('gem.treatmentLabel')}</dt>
+                    <dd>{t('provenance.treatmentValue')}</dd>
                   </div>
                   <div className="flex justify-between gap-6 py-3 text-sm">
-                    <dt className="text-ink-soft">Availability</dt>
-                    <dd>{gem.isSold ? 'Sold' : 'Available'}</dd>
+                    <dt className="text-ink-soft">
+                      {t('gem.availabilityLabel')}
+                    </dt>
+                    <dd>{gem.isSold ? t('gem.sold') : t('gem.available')}</dd>
                   </div>
                 </dl>
               </div>

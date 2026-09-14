@@ -1,0 +1,228 @@
+{
+  "a11y": {
+    "skipToContent": "跳转至主要内容",
+    "primaryNav": "主导航",
+    "searchCollection": "搜索珍藏",
+    "openMenu": "打开菜单",
+    "closeMenu": "关闭菜单",
+    "languageSwitcher": "语言",
+    "switchLanguage": "切换至{{language}}"
+  },
+  "nav": {
+    "gemstones": "宝石",
+    "inquire": "咨询"
+  },
+  "common": {
+    "ourStory": "我们的故事",
+    "exploreGemstones": "探索宝石",
+    "makeInquiry": "立即咨询",
+    "learnTitle": "了解宝石知识",
+    "learnSubtitle": "简明实用的宝石鉴赏指南，助您在购买前读懂一块宝石。",
+    "newStonesMessage": "我们正持续为珍藏增添新宝石。欢迎联系我们，了解即将上架的品项。"
+  },
+  "site": {
+    "tagline": "天生珍稀。",
+    "description": "精心甄选的天然未经处理宝石珍藏，产自缅甸抹谷。"
+  },
+  "footer": {
+    "gemstonesTitle": "宝石",
+    "viewAll": "查看全部",
+    "learnTitle": "了解更多",
+    "aboutTitle": "关于我们",
+    "instagram": "Instagram",
+    "copyright": "© {{year}} {{brand}}",
+    "disclaimer": "所有宝石均为天然未经处理，产自缅甸抹谷。如需鉴定证书或了解库存情况，请与我们联系。"
+  },
+  "home": {
+    "hero": {
+      "imageAlt": "白色大理石母岩上的天然红宝石原石"
+    },
+    "categories": {
+      "title": "按宝石种类浏览",
+      "imageAlt": "{{name}}宝石"
+    },
+    "featured": {
+      "title": "精选宝石"
+    },
+    "values": {
+      "title": "为何选择{{brand}}",
+      "minedInMogok": {
+        "title": "产自抹谷",
+        "body": "我们出售的每一颗宝石均产自缅甸北部的抹谷——这个以红宝石与尖晶石闻名数百年的山谷。"
+      },
+      "naturalUntreated": {
+        "title": "天然未经处理",
+        "body": "我们的宝石均为100%天然，未经加热或任何其他处理。您所见,即为宝石出土时的本来面貌。"
+      },
+      "personalService": {
+        "title": "专属服务",
+        "body": "每一条咨询我们都亲自回复。如需更多照片、详细信息，或希望进一步沟通，欢迎随时联系。"
+      }
+    },
+    "cta": {
+      "title": "对某颗宝石感兴趣吗？",
+      "body": "如需了解库存情况、获取更多照片，或对某颗宝石有任何疑问，欢迎与我们联系。"
+    }
+  },
+  "gems": {
+    "title": "珍藏",
+    "subtitle": "精心甄选的单颗切割宝石珍藏。",
+    "noMatchMessage": "没有符合当前筛选条件的宝石。",
+    "clearFilters": "清除筛选"
+  },
+  "gemstonePage": {
+    "readGuide": "阅读{{name}}指南",
+    "inCollection": "珍藏中的宝石",
+    "noStonesMessage": "目前暂无{{name}}上架。新宝石将在入藏后陆续添加。",
+    "viewFullCollection": "查看完整珍藏"
+  },
+  "gem": {
+    "sold": "已售出",
+    "available": "现货",
+    "priceOnRequest": "价格面议",
+    "gemTypeLabel": "宝石种类",
+    "caratLabel": "克拉重量",
+    "gemNoLabel": "宝石编号",
+    "originLabel": "产地",
+    "treatmentLabel": "处理情况",
+    "availabilityLabel": "库存状态",
+    "noLabel": "编号",
+    "stoneNoPrefix": "宝石编号 {{no}}"
+  },
+  "gemDetail": {
+    "loadingAria": "宝石加载中",
+    "notFoundTitle": "未找到该宝石",
+    "notFoundMessage": "编号为 {{no}} 的宝石不在当前珍藏中，可能已被移除，或链接已过期。",
+    "viewCollection": "查看珍藏",
+    "soldMessage": "此宝石已售出。如需类似宝石，欢迎向我们咨询。",
+    "viewAvailable": "查看现货宝石",
+    "inquireAbout": "咨询此宝石",
+    "specifications": "规格信息"
+  },
+  "provenance": {
+    "originValue": "缅甸抹谷",
+    "treatmentValue": "无（天然，未经加热处理）"
+  },
+  "filters": {
+    "groupLabel": "按宝石种类筛选",
+    "all": "全部",
+    "searchLabel": "按种类或编号搜索",
+    "searchPlaceholder": "搜索种类或编号",
+    "availableOnly": "仅显示现货",
+    "sortLabel": "排序",
+    "sort": {
+      "no": "宝石编号",
+      "caratAsc": "克拉：从低到高",
+      "caratDesc": "克拉：从高到低",
+      "priceAsc": "价格：从低到高",
+      "priceDesc": "价格：从高到低"
+    }
+  },
+  "gallery": {
+    "viewPhoto": "查看第 {{n}} 张照片"
+  },
+  "certificate": {
+    "view": "查看鉴定证书",
+    "hide": "隐藏鉴定证书",
+    "openNewTab": "在新标签页中打开证书",
+    "openAria": "在新标签页中打开完整鉴定证书",
+    "altPrefix": "{{alt}}的鉴定证书",
+    "tapToView": "点击查看完整尺寸。"
+  },
+  "contact": {
+    "title": "宝石咨询",
+    "subtitle": "请告诉我们您感兴趣的宝石，或描述您想寻找的类型。我们会亲自回复每一条咨询。",
+    "regarding": "关于：{{gemLabel}}",
+    "preferEmail": "更习惯用邮件联系？请直接写信至",
+    "form": {
+      "name": "姓名",
+      "email": "电子邮箱",
+      "phone": "电话号码（选填）",
+      "gemstone": "宝石",
+      "generalInquiry": "一般咨询",
+      "message": "留言内容",
+      "sendInquiry": "发送咨询",
+      "sending": "发送中…"
+    },
+    "validation": {
+      "name": "请填写您的姓名。",
+      "email": "请填写有效的电子邮箱地址。",
+      "message": "请填写留言内容。"
+    },
+    "success": {
+      "title": "咨询已发送",
+      "body": "谢谢您，{{name}}。我们已收到您的咨询，通常会在一到两天内亲自回复。",
+      "fallbackName": "客人",
+      "sendAnother": "发送另一条咨询"
+    },
+    "notConfigured": {
+      "title": "还差一步",
+      "body": "此页面暂未设置自动发送功能，因此您的咨询不会自动送出。请点击下方按钮，系统将在您的邮件应用中打开一份预填草稿，请检查后点击发送。"
+    },
+    "failed": {
+      "title": "出现了一些问题",
+      "body": "您的咨询未能自动发送。请改用下方按钮通过电子邮件发送，对由此带来的不便，我们深表歉意。"
+    },
+    "openEmailDraft": "打开邮件草稿",
+    "mailto": {
+      "subjectWithGem": "宝石咨询：{{gemLabel}}",
+      "subjectGeneral": "宝石咨询",
+      "name": "姓名",
+      "email": "电子邮箱",
+      "phone": "电话",
+      "gemstone": "宝石"
+    }
+  },
+  "notFound": {
+    "title": "页面未找到",
+    "message": "您访问的页面不存在，或可能已被移动。",
+    "backHome": "返回首页"
+  },
+  "errorState": {
+    "title": "目前暂时无法加载宝石珍藏。",
+    "subtitle": "请稍后再试。",
+    "retry": "重试"
+  },
+  "loading": {
+    "gemstonesAria": "宝石加载中"
+  },
+  "meta": {
+    "home": {
+      "title": "精致切割宝石",
+      "description": "精心甄选的天然未经处理宝石珍藏，产自缅甸抹谷，欢迎私下垂询。"
+    },
+    "gems": {
+      "title": "珍藏",
+      "description": "浏览产自缅甸抹谷的天然未经处理宝石完整珍藏。"
+    },
+    "gemstoneCategory": {
+      "descriptionFallback": "产自缅甸抹谷的天然未经处理{{name}}。"
+    },
+    "gemDetail": {
+      "description": "一颗产自缅甸抹谷的天然未经处理宝石。如需了解库存情况及详情，请与我们联系。"
+    },
+    "education": {
+      "title": "了解宝石知识",
+      "description": "简明实用的宝石鉴赏指南，助您在购买前读懂一块宝石。"
+    },
+    "about": {
+      "title": "关于我们"
+    },
+    "contact": {
+      "title": "联系我们",
+      "description": "请告诉我们您感兴趣的宝石，或描述您想寻找的类型。我们会亲自回复每一条咨询。"
+    },
+    "notFound": {
+      "title": "页面未找到"
+    }
+  },
+  "gemstones": {
+    "ruby": { "name": "红宝石 (Ruby)", "shortName": "红宝石" },
+    "sapphire": { "name": "蓝宝石 (Sapphire)", "shortName": "蓝宝石" },
+    "peridot": { "name": "橄榄石 (Peridot)", "shortName": "橄榄石" },
+    "tourmaline": { "name": "碧玺 (Tourmaline)", "shortName": "碧玺" },
+    "spinel": { "name": "尖晶石 (Spinel)", "shortName": "尖晶石" },
+    "zircon": { "name": "锆石 (Zircon)", "shortName": "锆石" },
+    "other": { "name": "其他", "shortName": "其他" }
+  }
+}

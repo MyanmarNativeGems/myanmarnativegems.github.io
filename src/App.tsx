@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { HashRouter, Route, Routes } from 'react-router'
+import { useTranslation } from 'react-i18next'
 import { SiteLayout } from './components/layout/SiteLayout'
 import { gemstoneCategories } from './config/gemstones'
 import { HomePage } from './pages/HomePage'
@@ -23,6 +24,8 @@ const ContentPage = lazy(() =>
  * HashRouter for BrowserRouter here and add a host-level SPA fallback.
  */
 export default function App() {
+  const { t } = useTranslation()
+
   return (
     <HashRouter>
       <Routes>
@@ -50,7 +53,11 @@ export default function App() {
             path="about"
             element={
               <Suspense fallback={<div className="min-h-[60vh]" />}>
-                <ContentPage collection="pages" slug="our-story" />
+                <ContentPage
+                  collection="pages"
+                  slug="our-story"
+                  metaTitle={t('meta.about.title')}
+                />
               </Suspense>
             }
           />

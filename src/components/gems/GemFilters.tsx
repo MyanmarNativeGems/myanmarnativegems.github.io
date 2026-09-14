@@ -1,12 +1,15 @@
 import { Search } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import { cn, type GemFilterState, type GemSort } from '../../lib/utils'
+import { translateGemType } from '../../i18n/gemTypes'
+import type { Locale } from '../../i18n'
 
-const SORT_OPTIONS: Array<{ value: GemSort; label: string }> = [
-  { value: 'no', label: 'Gem No.' },
-  { value: 'carat-asc', label: 'Carat: Low to High' },
-  { value: 'carat-desc', label: 'Carat: High to Low' },
-  { value: 'price-asc', label: 'Price: Low to High' },
-  { value: 'price-desc', label: 'Price: High to Low' },
+const SORT_OPTIONS: Array<{ value: GemSort; labelKey: string }> = [
+  { value: 'no', labelKey: 'filters.sort.no' },
+  { value: 'carat-asc', labelKey: 'filters.sort.caratAsc' },
+  { value: 'carat-desc', labelKey: 'filters.sort.caratDesc' },
+  { value: 'price-asc', labelKey: 'filters.sort.priceAsc' },
+  { value: 'price-desc', labelKey: 'filters.sort.priceDesc' },
 ]
 
 interface GemFiltersProps {
@@ -23,13 +26,15 @@ export function GemFilters({
   onChange,
   className,
 }: GemFiltersProps) {
+  const { t, i18n } = useTranslation()
+  const locale = i18n.language as Locale
   const typeOptions = ['all', ...gemTypes]
 
   return (
     <div className={className}>
       <div
         role="group"
-        aria-label="Filter by gem type"
+        aria-label={t('filters.groupLabel')}
         className="flex flex-wrap gap-x-6 gap-y-2"
       >
         {typeOptions.map((type) => {
@@ -47,7 +52,7 @@ export function GemFilters({
                   : 'border-transparent text-ink-soft hover:text-ink',
               )}
             >
-              {type === 'all' ? 'All' : type}
+              {type === 'all' ? t('filters.all') : translateGemType(type, locale)}
             </button>
           )
         })}
@@ -61,7 +66,7 @@ export function GemFilters({
             aria-hidden
           />
           <label htmlFor="gem-search" className="sr-only">
-            Search by gem type or number
+            {t('filters.searchLabel')}
           </label>
           <input
             id="gem-search"
@@ -70,7 +75,7 @@ export function GemFilters({
             onChange={(event) =>
               onChange({ ...value, search: event.target.value })
             }
-            placeholder="Search type or number"
+            placeholder={t('filters.searchPlaceholder')}
             className="w-full border-b border-line bg-transparent py-2 pl-7 text-sm placeholder:text-ink-soft/70 focus:border-ink focus:outline-none"
           />
         </div>
@@ -84,11 +89,11 @@ export function GemFilters({
             }
             className="h-4 w-4 accent-ruby"
           />
-          Available only
+          {t('filters.availableOnly')}
         </label>
 
         <label className="flex items-center gap-2.5 text-sm">
-          <span className="text-ink-soft">Sort</span>
+          <span className="text-ink-soft">{t('filters.sortLabel')}</span>
           <select
             value={value.sort}
             onChange={(event) =>
@@ -98,7 +103,7 @@ export function GemFilters({
           >
             {SORT_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
-                {option.label}
+                {t(option.labelKey)}
               </option>
             ))}
           </select>

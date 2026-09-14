@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { cn } from '../../lib/utils'
 import { Button } from './Button'
 
@@ -8,6 +9,7 @@ export function ErrorState({
   onRetry?: () => void
   className?: string
 }) {
+  const { t } = useTranslation()
   return (
     <div
       className={cn(
@@ -16,13 +18,11 @@ export function ErrorState({
       )}
       role="alert"
     >
-      <p className="font-serif text-2xl font-medium">
-        We're unable to load the gemstone collection right now.
-      </p>
-      <p className="mt-2 text-ink-soft">Please try again shortly.</p>
+      <p className="font-serif text-2xl font-medium">{t('errorState.title')}</p>
+      <p className="mt-2 text-ink-soft">{t('errorState.subtitle')}</p>
       {onRetry && (
         <Button variant="outline" className="mt-7" onClick={onRetry}>
-          Try Again
+          {t('errorState.retry')}
         </Button>
       )}
     </div>

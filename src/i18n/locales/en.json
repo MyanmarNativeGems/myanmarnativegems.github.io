@@ -1,0 +1,228 @@
+{
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "primaryNav": "Primary",
+    "searchCollection": "Search the collection",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "languageSwitcher": "Language",
+    "switchLanguage": "Switch to {{language}}"
+  },
+  "nav": {
+    "gemstones": "Gemstones",
+    "inquire": "Inquire"
+  },
+  "common": {
+    "ourStory": "Our Story",
+    "exploreGemstones": "Explore Gemstones",
+    "makeInquiry": "Make an Inquiry",
+    "learnTitle": "Learn About Gemstones",
+    "learnSubtitle": "Plain, practical guides to reading a stone before you buy.",
+    "newStonesMessage": "New stones are being added to the collection. Contact us to hear about upcoming availability."
+  },
+  "site": {
+    "tagline": "Rare by Nature.",
+    "description": "A curated collection of natural, untreated cut gemstones from Mogok, Myanmar."
+  },
+  "footer": {
+    "gemstonesTitle": "Gemstones",
+    "viewAll": "View All",
+    "learnTitle": "Learn",
+    "aboutTitle": "About",
+    "instagram": "Instagram",
+    "copyright": "© {{year}} {{brand}}",
+    "disclaimer": "All stones are natural, untreated, and mined in Mogok, Myanmar. Contact us for certification and availability."
+  },
+  "home": {
+    "hero": {
+      "imageAlt": "Rough ruby crystal on white marble matrix"
+    },
+    "categories": {
+      "title": "Browse by Gemstone",
+      "imageAlt": "{{name}} stones"
+    },
+    "featured": {
+      "title": "Featured Gemstones"
+    },
+    "values": {
+      "title": "Why {{brand}}",
+      "minedInMogok": {
+        "title": "Mined in Mogok",
+        "body": "Every stone we sell comes from Mogok, the valley in northern Myanmar celebrated for its rubies and spinels for centuries."
+      },
+      "naturalUntreated": {
+        "title": "Natural and Untreated",
+        "body": "Our stones are 100% natural, with no heat and no other treatments. What you see is how the stone came out of the ground."
+      },
+      "personalService": {
+        "title": "Personal Service",
+        "body": "Every inquiry is answered personally. Ask for more photographs, more detail, or a conversation."
+      }
+    },
+    "cta": {
+      "title": "Interested in a Gemstone?",
+      "body": "Contact us for availability, additional photos, or questions about a stone."
+    }
+  },
+  "gems": {
+    "title": "The Collection",
+    "subtitle": "A curated selection of individual cut gemstones.",
+    "noMatchMessage": "No stones match your current filters.",
+    "clearFilters": "Clear Filters"
+  },
+  "gemstonePage": {
+    "readGuide": "Read the {{name}} guide",
+    "inCollection": "In the Collection",
+    "noStonesMessage": "No {{name}} stones are listed right now. New stones are added as they are acquired.",
+    "viewFullCollection": "View the full collection"
+  },
+  "gem": {
+    "sold": "Sold",
+    "available": "Available",
+    "priceOnRequest": "Price on request",
+    "gemTypeLabel": "Gem Type",
+    "caratLabel": "Carat",
+    "gemNoLabel": "Gem No.",
+    "originLabel": "Origin",
+    "treatmentLabel": "Treatment",
+    "availabilityLabel": "Availability",
+    "noLabel": "No.",
+    "stoneNoPrefix": "Stone No. {{no}}"
+  },
+  "gemDetail": {
+    "loadingAria": "Loading gemstone",
+    "notFoundTitle": "Stone not found",
+    "notFoundMessage": "Gem No. {{no}} is not part of the current collection. It may have been removed or the link may be out of date.",
+    "viewCollection": "View the Collection",
+    "soldMessage": "This stone has been sold. Similar stones may be available on request.",
+    "viewAvailable": "View Available Gems",
+    "inquireAbout": "Inquire About This Gem",
+    "specifications": "Specifications"
+  },
+  "provenance": {
+    "originValue": "Mogok, Myanmar",
+    "treatmentValue": "None (natural, unheated)"
+  },
+  "filters": {
+    "groupLabel": "Filter by gem type",
+    "all": "All",
+    "searchLabel": "Search by gem type or number",
+    "searchPlaceholder": "Search type or number",
+    "availableOnly": "Available only",
+    "sortLabel": "Sort",
+    "sort": {
+      "no": "Gem No.",
+      "caratAsc": "Carat: Low to High",
+      "caratDesc": "Carat: High to Low",
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low"
+    }
+  },
+  "gallery": {
+    "viewPhoto": "View photo {{n}}"
+  },
+  "certificate": {
+    "view": "View certificate",
+    "hide": "Hide certificate",
+    "openNewTab": "Open certificate in a new tab",
+    "openAria": "Open the full laboratory certificate in a new tab",
+    "altPrefix": "Laboratory certificate for {{alt}}",
+    "tapToView": "Tap to view full size."
+  },
+  "contact": {
+    "title": "Gemstone Inquiry",
+    "subtitle": "Tell us which stone interests you, or describe what you are looking for. We answer every inquiry personally.",
+    "regarding": "Regarding: {{gemLabel}}",
+    "preferEmail": "Prefer email? Write to us directly at",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "gemstone": "Gemstone",
+      "generalInquiry": "General inquiry",
+      "message": "Message",
+      "sendInquiry": "Send Inquiry",
+      "sending": "Sending…"
+    },
+    "validation": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid email address.",
+      "message": "Please enter a message."
+    },
+    "success": {
+      "title": "Inquiry sent",
+      "body": "Thank you, {{name}}. We've received your inquiry and will reply personally, usually within a day or two.",
+      "fallbackName": "there",
+      "sendAnother": "Send Another Inquiry"
+    },
+    "notConfigured": {
+      "title": "One more step",
+      "body": "Sending directly from this page is not set up yet, so your inquiry is not sent automatically. The button below opens a prefilled draft in your email app; review it and press send."
+    },
+    "failed": {
+      "title": "Something went wrong",
+      "body": "Your inquiry could not be sent automatically. Please use the button below to send it by email instead, and accept our apologies for the extra step."
+    },
+    "openEmailDraft": "Open Email Draft",
+    "mailto": {
+      "subjectWithGem": "Gemstone inquiry: {{gemLabel}}",
+      "subjectGeneral": "Gemstone inquiry",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "gemstone": "Gemstone"
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "message": "The page you are looking for does not exist or may have moved.",
+    "backHome": "Back to Home"
+  },
+  "errorState": {
+    "title": "We're unable to load the gemstone collection right now.",
+    "subtitle": "Please try again shortly.",
+    "retry": "Try Again"
+  },
+  "loading": {
+    "gemstonesAria": "Loading gemstones"
+  },
+  "meta": {
+    "home": {
+      "title": "Fine Cut Gemstones",
+      "description": "A curated collection of natural, untreated cut gemstones from Mogok, Myanmar, available for private inquiry."
+    },
+    "gems": {
+      "title": "The Collection",
+      "description": "Browse the full collection of natural, untreated cut gemstones from Mogok, Myanmar."
+    },
+    "gemstoneCategory": {
+      "descriptionFallback": "Natural, untreated {{name}} from Mogok, Myanmar."
+    },
+    "gemDetail": {
+      "description": "A natural, untreated stone from Mogok, Myanmar. Contact us for availability and details."
+    },
+    "education": {
+      "title": "Learn About Gemstones",
+      "description": "Plain, practical guides to reading a stone before you buy."
+    },
+    "about": {
+      "title": "About"
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Tell us which stone interests you, or describe what you are looking for. We answer every inquiry personally."
+    },
+    "notFound": {
+      "title": "Page Not Found"
+    }
+  },
+  "gemstones": {
+    "ruby": { "name": "Ruby", "shortName": "Ruby" },
+    "sapphire": { "name": "Sapphire", "shortName": "Sapphire" },
+    "peridot": { "name": "Peridot", "shortName": "Peridot" },
+    "tourmaline": { "name": "Tourmaline", "shortName": "Tourmaline" },
+    "spinel": { "name": "Spinel", "shortName": "Spinel" },
+    "zircon": { "name": "Zircon", "shortName": "Zircon" },
+    "other": { "name": "Others", "shortName": "Others" }
+  }
+}

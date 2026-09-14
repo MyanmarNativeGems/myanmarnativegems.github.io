@@ -1,15 +1,20 @@
 import { useState } from 'react'
 import { useSearchParams } from 'react-router'
+import { useTranslation } from 'react-i18next'
+import type { TFunction } from 'i18next'
 import { Button } from '../components/common/Button'
 import { Container } from '../components/common/Container'
 import { siteConfig } from '../config/site'
 import { useGems } from '../hooks/useGems'
+import { usePageMeta } from '../hooks/usePageMeta'
 import {
   submitInquiry,
   type InquiryDraft,
   type InquiryResult,
 } from '../lib/inquiry'
 import { formatCarat } from '../lib/utils'
+import { translateGemType } from '../i18n/gemTypes'
+import type { Locale } from '../i18n'
 import type { Gem } from '../types/gem'
 
 interface FormValues {
@@ -22,18 +27,19 @@ interface FormValues {
 
 type FormErrors = Partial<Record<'name' | 'email' | 'message', string>>
 
-function gemOptionLabel(gem: Gem): string {
+function gemOptionLabel(gem: Gem, t: TFunction, locale: Locale): string {
   const carat = gem.carat !== undefined ? ` (${formatCarat(gem.carat)})` : ''
-  return `${gem.gemType} No. ${gem.no}${carat}`
+  const type = translateGemType(gem.gemType, locale)
+  return `${type} ${t('gem.noLabel')} ${gem.no}${carat}`
 }
 
-function validate(values: FormValues): FormErrors {
+function validate(values: FormValues, t: TFunction): FormErrors {
   const errors: FormErrors = {}
-  if (!values.name.trim()) errors.name = 'Please enter your name.'
+  if (!values.name.trim()) errors.name = t('contact.validation.name')
   if (!/^\S+@\S+\.\S+$/.test(values.email.trim())) {
-    errors.email = 'Please enter a valid email address.'
+    errors.email = t('contact.validation.email')
   }
-  if (!values.message.trim()) errors.message = 'Please enter a message.'
+  if (!values.message.trim()) errors.message = t('contact.validation.message')
   return errors
 }
 
@@ -67,6 +73,9 @@ function Field({
 }
 
 export function ContactPage() {
+  const { t, i18n } = useTranslation()
+  const locale = i18n.language as Locale
+  usePageMeta(t('meta.contact.title'), t('meta.contact.description'))
   const [searchParams] = useSearchParams()
   const { gems } = useGems()
   const preselectedNo = searchParams.get('gem') ?? ''
@@ -92,7 +101,7 @@ export function ContactPage() {
 
   const onSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-    const nextErrors = validate(values)
+    const nextErrors = validate(values, t)
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) return
 
@@ -101,15 +110,24 @@ export function ContactPage() {
       email: values.email.trim(),
       phone: values.phone.trim(),
       gemLabel: selectedGem
-        ? gemOptionLabel(selectedGem)
+        ? gemOptionLabel(selectedGem, t, locale)
         : values.gemNo
-          ? `Stone No. ${values.gemNo}`
+          ? t('gem.stoneNoPrefix', { no: values.gemNo })
           : '',
       message: values.message.trim(),
     }
+    const subject = draft.gemLabel
+      ? t('contact.mailto.subjectWithGem', { gemLabel: draft.gemLabel })
+      : t('contact.mailto.subjectGeneral')
+    const labels = {
+      name: t('contact.mailto.name'),
+      email: t('contact.mailto.email'),
+      phone: t('contact.mailto.phone'),
+      gemstone: t('contact.mailto.gemstone'),
+    }
     setIsSubmitting(true)
     try {
-      setResult(await submitInquiry(draft))
+      setResult(await submitInquiry(draft, subject, labels))
     } finally {
       setIsSubmitting(false)
     }
@@ -126,19 +144,20 @@ export function ContactPage() {
       <Container className="grid gap-12 md:grid-cols-12 md:gap-16">
         <header className="md:col-span-5">
           <h1 className="font-serif text-4xl font-medium md:text-5xl">
-            Gemstone Inquiry
+            {t('contact.title')}
           </h1>
           <p className="mt-4 leading-relaxed text-ink-soft">
-            Tell us which stone interests you, or describe what you are
-            looking for. We answer every inquiry personally.
+            {t('contact.subtitle')}
           </p>
           {preselectedGem && (
             <p className="mt-6 border-l-2 border-gold pl-4 text-sm text-ink-soft">
-              Regarding: {gemOptionLabel(preselectedGem)}
+              {t('contact.regarding', {
+                gemLabel: gemOptionLabel(preselectedGem, t, locale),
+              })}
             </p>
           )}
           <p className="mt-6 text-sm text-ink-soft">
-            Prefer email? Write to us directly at{' '}
+            {t('contact.preferEmail')}{' '}
             <a
               href={`mailto:${siteConfig.email}`}
               className="underline decoration-gold underline-offset-4 transition-colors duration-200 hover:text-ruby"
@@ -153,7 +172,11 @@ export function ContactPage() {
           onSubmit={(event) => void onSubmit(event)}
           noValidate
         >
-          <Field label="Name" htmlFor="inquiry-name" error={errors.name}>
+          <Field
+            label={t('contact.form.name')}
+            htmlFor="inquiry-name"
+            error={errors.name}
+          >
             <input
               id="inquiry-name"
               type="text"
@@ -166,7 +189,11 @@ export function ContactPage() {
             />
           </Field>
 
-          <Field label="Email" htmlFor="inquiry-email" error={errors.email}>
+          <Field
+            label={t('contact.form.email')}
+            htmlFor="inquiry-email"
+            error={errors.email}
+          >
             <input
               id="inquiry-email"
               type="email"
@@ -181,7 +208,7 @@ export function ContactPage() {
             />
           </Field>
 
-          <Field label="Phone (optional)" htmlFor="inquiry-phone">
+          <Field label={t('contact.form.phone')} htmlFor="inquiry-phone">
             <input
               id="inquiry-phone"
               type="tel"
@@ -192,29 +219,29 @@ export function ContactPage() {
             />
           </Field>
 
-          <Field label="Gemstone" htmlFor="inquiry-gem">
+          <Field label={t('contact.form.gemstone')} htmlFor="inquiry-gem">
             <select
               id="inquiry-gem"
               value={values.gemNo}
               onChange={(event) => setValue('gemNo', event.target.value)}
               className={inputClasses}
             >
-              <option value="">General inquiry</option>
+              <option value="">{t('contact.form.generalInquiry')}</option>
               {preselectedNo && !preselectedGem && (
                 <option value={preselectedNo}>
-                  Stone No. {preselectedNo}
+                  {t('gem.stoneNoPrefix', { no: preselectedNo })}
                 </option>
               )}
               {gems.map((gem) => (
                 <option key={gem.no} value={gem.no}>
-                  {gemOptionLabel(gem)}
+                  {gemOptionLabel(gem, t, locale)}
                 </option>
               ))}
             </select>
           </Field>
 
           <Field
-            label="Message"
+            label={t('contact.form.message')}
             htmlFor="inquiry-message"
             error={errors.message}
           >
@@ -234,12 +261,14 @@ export function ContactPage() {
           {result?.delivered ? (
             <div className="border border-line bg-ivory-deep p-6" role="status">
               <h2 className="font-serif text-xl font-medium">
-                Inquiry sent
+                {t('contact.success.title')}
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                Thank you, {values.name.split(' ')[0] || 'there'}. We've
-                received your inquiry and will reply personally, usually
-                within a day or two.
+                {t('contact.success.body', {
+                  name:
+                    values.name.split(' ')[0] ||
+                    t('contact.success.fallbackName'),
+                })}
               </p>
               <Button
                 type="button"
@@ -247,26 +276,30 @@ export function ContactPage() {
                 className="mt-5"
                 onClick={startOver}
               >
-                Send Another Inquiry
+                {t('contact.success.sendAnother')}
               </Button>
             </div>
           ) : result && !result.delivered ? (
             <div className="border border-line bg-ivory-deep p-6" role="status">
               <h2 className="font-serif text-xl font-medium">
-                {result.attempted ? 'Something went wrong' : 'One more step'}
+                {result.attempted
+                  ? t('contact.failed.title')
+                  : t('contact.notConfigured.title')}
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">
                 {result.attempted
-                  ? "Your inquiry could not be sent automatically. Please use the button below to send it by email instead, and accept our apologies for the extra step."
-                  : 'Sending directly from this page is not set up yet, so your inquiry is not sent automatically. The button below opens a prefilled draft in your email app; review it and press send.'}
+                  ? t('contact.failed.body')
+                  : t('contact.notConfigured.body')}
               </p>
               <Button href={result.mailtoUrl} variant="ruby" className="mt-5">
-                Open Email Draft
+                {t('contact.openEmailDraft')}
               </Button>
             </div>
           ) : (
             <Button type="submit" variant="ruby" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending…' : 'Send Inquiry'}
+              {isSubmitting
+                ? t('contact.form.sending')
+                : t('contact.form.sendInquiry')}
             </Button>
           )}
         </form>

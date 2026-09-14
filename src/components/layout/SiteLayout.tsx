@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Outlet, useLocation } from 'react-router'
+import { useTranslation } from 'react-i18next'
 import { Header } from './Header'
 import { Footer } from './Footer'
 
@@ -9,6 +10,7 @@ import { Footer } from './Footer'
  * from doing this automatically).
  */
 export function SiteLayout() {
+  const { t } = useTranslation()
   const { pathname } = useLocation()
   const mainRef = useRef<HTMLElement>(null)
 
@@ -24,7 +26,7 @@ export function SiteLayout() {
         onClick={() => mainRef.current?.focus()}
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:text-ivory"
       >
-        Skip to main content
+        {t('a11y.skipToContent')}
       </button>
       <Header />
       <main id="main" ref={mainRef} tabIndex={-1} className="flex-1 focus:outline-none">

@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { useTranslation } from 'react-i18next'
 import { Container } from '../common/Container'
 import { ErrorState } from '../common/ErrorState'
 import { GemGridSkeleton } from '../common/LoadingSkeleton'
@@ -7,6 +8,7 @@ import { useGems } from '../../hooks/useGems'
 import { selectFeaturedGems } from '../../lib/utils'
 
 export function FeaturedGems() {
+  const { t } = useTranslation()
   const { gems, isLoading, error, refetch } = useGems()
   const featured = selectFeaturedGems(gems)
 
@@ -15,13 +17,13 @@ export function FeaturedGems() {
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <h2 className="font-serif text-3xl font-medium md:text-4xl">
-            Featured Gemstones
+            {t('home.featured.title')}
           </h2>
           <Link
             to="/gems"
             className="text-sm underline decoration-gold underline-offset-4 transition-colors duration-200 hover:text-ruby"
           >
-            Explore Gemstones
+            {t('common.exploreGemstones')}
           </Link>
         </div>
         <div className="mt-10">
@@ -31,8 +33,7 @@ export function FeaturedGems() {
             <ErrorState onRetry={() => void refetch()} />
           ) : featured.length === 0 ? (
             <p className="max-w-xl leading-relaxed text-ink-soft">
-              New stones are being added to the collection. Contact us to
-              hear about upcoming availability.
+              {t('common.newStonesMessage')}
             </p>
           ) : (
             <GemGrid gems={featured} variant="quad" />
