@@ -47,6 +47,12 @@ jobs:
           # either way, and it only accepts inquiry submissions, nothing
           # sensitive. See scripts/google-apps-script/inquiry-to-sheet.gs.
           VITE_INQUIRY_ENDPOINT_URL: ${{ vars.VITE_INQUIRY_ENDPOINT_URL || 'https://script.google.com/macros/s/AKfycbzawsLUwZcnlbQg1Q8pkoiMTFheETHyGp-KrVUUjlmZ3if9OUNBSbtvWAgvxIns-Jd5/exec' }}
+          # A GA4 Measurement ID is not confidential (it ships in the
+          # public JS bundle either way), so it's a repository *variable*,
+          # not a secret. Unset in the repo -> unset in the build ->
+          # src/lib/analytics.ts no-ops and no GA script ever loads.
+          VITE_GA_MEASUREMENT_ID: ${{ vars.VITE_GA_MEASUREMENT_ID }}
+          VITE_GA_DEBUG: ${{ vars.VITE_GA_DEBUG || 'false' }}
 
       - name: Configure Pages
         uses: actions/configure-pages@v6

@@ -13,6 +13,10 @@ const GEM_TYPE_NAMES: Partial<Record<Locale, Array<[keyword: string, name: strin
   my: [
     ['ruby', 'ပတ္တမြား'],
     ['sapphire', 'နီလာ'],
+    ['peridot', 'ပြောင်ခေါင်းစိမ်း'],
+    ['tourmaline', 'ဖရဲအူ'],
+    ['spinel', 'အညံ့ပန်း/နတ်ပန်း'],
+    ['zircon', 'ဂေါ်မိတ်'],
   ],
   zh: [
     ['ruby', '紅寶石'],

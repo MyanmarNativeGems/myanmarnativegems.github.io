@@ -1,3 +1,4 @@
+import { gemstoneCategories } from '../config/gemstones'
 import type { Gem } from '../types/gem'
 
 /** Joins conditional class names. */
@@ -5,6 +6,20 @@ export function cn(
   ...parts: Array<string | false | null | undefined>
 ): string {
   return parts.filter(Boolean).join(' ')
+}
+
+/**
+ * Matches a free-text gem type (e.g. "Pink Sapphire") to one of the
+ * site's own category slugs, the same substring rule GemstonePage uses
+ * to build each category's listing. Used for analytics (view_item's
+ * item_category), where a stable slug is more useful than free text.
+ */
+export function matchGemstoneCategorySlug(gemType: string): string {
+  const lower = gemType.toLowerCase()
+  const match = gemstoneCategories.find(
+    (category) => category.keyword && lower.includes(category.keyword),
+  )
+  return match?.slug ?? 'other'
 }
 
 const caratFormatter = new Intl.NumberFormat('en-US', {

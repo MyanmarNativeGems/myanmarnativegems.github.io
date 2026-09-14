@@ -136,6 +136,61 @@ src/content/education/*.md            -> /#/education/<slug>
 The education index page, the homepage "Learn" section, and the footer all
 generate themselves from the frontmatter; new articles appear automatically.
 
+## Google Analytics
+
+The site sends Google Analytics 4 events via `src/lib/analytics.ts` — a
+small set of typed functions around the standard `gtag.js` snippet, not a
+third-party analytics package. It tracks page views (including
+`HashRouter` route changes, which a stock GA4 snippet can't see on its
+own), collection filtering and search, product detail views, the
+"Inquire" CTA, inquiry form submissions, and outbound email/Instagram
+clicks. It never sends personally identifiable information (names,
+emails, phone numbers, message contents) to Google.
+
+Analytics is entirely optional: with `VITE_GA_MEASUREMENT_ID` unset,
+`initAnalytics()` no-ops, no GA script ever loads, and nothing else in the
+app behaves differently.
+
+### Setup
+
+1. Create a GA4 property in [Google Analytics](https://analytics.google.com).
+2. Add a **Web** data stream for `https://myanmarnativegems.github.io`.
+3. Copy its **Measurement ID** (`G-XXXXXXXXXX`).
+4. Locally, add it to `.env.local`:
+
+   ```
+   VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+   ```
+
+5. For production, Vite environment variables are injected **at build
+   time** — there's no server to read a runtime env var from, so the
+   build step itself needs the value. This repository builds through
+   GitHub Actions (`.github/workflows/deploy.yml`), so set it as a
+   **repository variable** (a measurement ID isn't confidential — it
+   ships in the public JS bundle regardless — so a secret isn't
+   necessary):
+
+   ```
+   Settings -> Secrets and variables -> Actions -> Variables -> New repository variable
+   Name:  VITE_GA_MEASUREMENT_ID
+   Value: G-XXXXXXXXXX
+   ```
+
+   The build step already reads it:
+
+   ```yaml
+   - run: npm run build
+     env:
+       VITE_GA_MEASUREMENT_ID: ${{ vars.VITE_GA_MEASUREMENT_ID }}
+       VITE_GA_DEBUG: ${{ vars.VITE_GA_DEBUG || 'false' }}
+   ```
+
+   Leaving the repository variable unset keeps analytics off in
+   production, same as an empty `.env.local` locally.
+
+6. Optional: `VITE_GA_DEBUG=true` initializes GA4 with `debug_mode: true`,
+   so events show up in GA's DebugView while developing. Defaults to off.
+
 ## Deployment (GitHub Pages)
 
 One-time repository setup:
@@ -159,7 +214,8 @@ static hosting; if the site later moves to a host with SPA fallbacks
 ```
 src/
   components/
-    common/     Button, Container, LoadingSkeleton, ErrorState
+    common/     Button, Container, LoadingSkeleton, ErrorState,
+                AnalyticsRouteTracker
     content/    MarkdownPage, MarkdownContent, EditorialHero, ArticleCard
     gems/       GemCard, GemGrid, GemImage, GemFilters, GemGallery
     home/       Hero, GemstoneCategories, FeaturedGems, ValuePropositions,
@@ -169,7 +225,8 @@ src/
   content/      pages/*.md, education/*.md
   data/         mockGems.ts (dev-only fallback)
   hooks/        useGems.ts
-  lib/          googleSheets.ts, markdown.ts, currency.ts, inquiry.ts, utils.ts
+  lib/          googleSheets.ts, markdown.ts, currency.ts, inquiry.ts,
+                analytics.ts, utils.ts
   pages/        one component per route
   types/        gem.ts, content.ts
 public/images/  placeholder artwork (replace with real photography)

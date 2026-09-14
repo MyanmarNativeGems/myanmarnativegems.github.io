@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { HashRouter, Route, Routes } from 'react-router'
 import { useTranslation } from 'react-i18next'
+import { AnalyticsRouteTracker } from './components/common/AnalyticsRouteTracker'
 import { SiteLayout } from './components/layout/SiteLayout'
 import { gemstoneCategories } from './config/gemstones'
 import { HomePage } from './pages/HomePage'
@@ -28,6 +29,7 @@ export default function App() {
 
   return (
     <HashRouter>
+      <AnalyticsRouteTracker />
       <Routes>
         <Route element={<SiteLayout />}>
           <Route index element={<HomePage />} />

@@ -7,6 +7,7 @@ import { Container } from '../components/common/Container'
 import { siteConfig } from '../config/site'
 import { useGems } from '../hooks/useGems'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { trackEvent } from '../lib/analytics'
 import {
   submitInquiry,
   type InquiryDraft,
@@ -126,6 +127,14 @@ export function ContactPage() {
       gemstone: t('contact.mailto.gemstone'),
     }
     setIsSubmitting(true)
+    // Fired on submission attempt, not confirmed delivery: the Apps
+    // Script endpoint is called with mode "no-cors" (see lib/inquiry.ts),
+    // so the frontend can never actually confirm the server accepted it.
+    // This only ever means "the visitor submitted the form" — no name,
+    // email, phone, or message content, just which stone (if any).
+    trackEvent('submit_inquiry', {
+      product_slug: values.gemNo || 'general',
+    })
     try {
       setResult(await submitInquiry(draft, subject, labels))
     } finally {
@@ -160,6 +169,7 @@ export function ContactPage() {
             {t('contact.preferEmail')}{' '}
             <a
               href={`mailto:${siteConfig.email}`}
+              onClick={() => trackEvent('contact_email_click')}
               className="underline decoration-gold underline-offset-4 transition-colors duration-200 hover:text-ruby"
             >
               {siteConfig.email}

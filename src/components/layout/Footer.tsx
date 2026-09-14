@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Container } from '../common/Container'
 import { gemstoneCategories } from '../../config/gemstones'
 import { siteConfig } from '../../config/site'
+import { trackEvent } from '../../lib/analytics'
 import { listContent } from '../../lib/markdown'
 import type { Locale } from '../../i18n'
 
@@ -51,6 +52,7 @@ export function Footer() {
           </p>
           <a
             href={`mailto:${siteConfig.email}`}
+            onClick={() => trackEvent('contact_email_click')}
             className="mt-4 inline-block text-sm underline decoration-gold underline-offset-4 transition-colors duration-200 hover:text-ruby"
           >
             {siteConfig.email}
@@ -60,6 +62,7 @@ export function Footer() {
               href={siteConfig.instagram}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('instagram_click')}
               className="mt-2 block text-sm text-ink-soft transition-colors duration-200 hover:text-ink"
             >
               {t('footer.instagram')}

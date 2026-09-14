@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../components/common/Button'
@@ -7,8 +8,9 @@ import { GemCertificate } from '../components/gems/GemCertificate'
 import { GemGallery } from '../components/gems/GemGallery'
 import { useGem } from '../hooks/useGems'
 import { usePageMeta } from '../hooks/usePageMeta'
+import { trackEvent, trackEventOnce } from '../lib/analytics'
 import { formatKyat } from '../lib/currency'
-import { formatCarat, gemAltText } from '../lib/utils'
+import { formatCarat, gemAltText, matchGemstoneCategorySlug } from '../lib/utils'
 import { translateGemType } from '../i18n/gemTypes'
 import type { Locale } from '../i18n'
 
@@ -45,6 +47,25 @@ export function GemDetailPage() {
       : t('gemDetail.notFoundTitle'),
     t('meta.gemDetail.description'),
   )
+
+  // Keyed on gem?.no (a primitive), not the gem object itself, so this
+  // fires once per stone actually viewed — not on every harmless
+  // re-render (locale switch, parent state change, ...) while the same
+  // detail page stays mounted. trackEventOnce also guards against React
+  // StrictMode's dev-only double effect invocation double-firing this.
+  useEffect(() => {
+    if (!gem) return
+    trackEventOnce('view_item', gem.no, 'view_item', {
+      item_id: gem.no,
+      item_name: gem.gemType,
+      item_category: matchGemstoneCategorySlug(gem.gemType),
+      gemstone: gem.gemType,
+      ...(gem.priceKyat !== undefined
+        ? { value: gem.priceKyat, currency: 'MMK' }
+        : {}),
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gem?.no])
 
   return (
     <div className="py-12 md:py-20">
@@ -125,7 +146,17 @@ export function GemDetailPage() {
                     </Button>
                   </>
                 ) : (
-                  <Button to={`/contact?gem=${gem.no}`} variant="ruby">
+                  <Button
+                    to={`/contact?gem=${gem.no}`}
+                    variant="ruby"
+                    onClick={() =>
+                      trackEvent('begin_inquiry', {
+                        product_id: gem.no,
+                        product_name: gem.gemType,
+                        gemstone: gem.gemType,
+                      })
+                    }
+                  >
                     {t('gemDetail.inquireAbout')}
                   </Button>
                 )}

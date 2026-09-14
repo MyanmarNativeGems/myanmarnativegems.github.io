@@ -13,13 +13,21 @@ const variantClasses: Record<ButtonVariant, string> = {
   outline: 'border border-ink text-ink hover:border-ruby hover:text-ruby',
 }
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
   /** Internal route; renders a react-router Link. */
   to?: string
   /** External or mailto URL; renders an anchor. */
   href?: string
   variant?: ButtonVariant
   children: ReactNode
+  /**
+   * Takes no event argument on purpose: this fires identically whether
+   * the button renders as a <button>, a router <Link>, or a plain <a>,
+   * which a MouseEvent<HTMLButtonElement> couldn't type-check across all
+   * three. Callers that only need "this was clicked" (e.g. analytics)
+   * don't lose anything; every current call site already ignores the event.
+   */
+  onClick?: () => void
 }
 
 export function Button({
@@ -28,26 +36,27 @@ export function Button({
   variant = 'primary',
   className,
   children,
+  onClick,
   ...rest
 }: ButtonProps) {
   const classes = cn(baseClasses, variantClasses[variant], className)
 
   if (to) {
     return (
-      <Link to={to} className={classes}>
+      <Link to={to} className={classes} onClick={onClick}>
         {children}
       </Link>
     )
   }
   if (href) {
     return (
-      <a href={href} className={classes}>
+      <a href={href} className={classes} onClick={onClick}>
         {children}
       </a>
     )
   }
   return (
-    <button className={classes} {...rest}>
+    <button className={classes} onClick={onClick} {...rest}>
       {children}
     </button>
   )

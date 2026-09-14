@@ -1,8 +1,13 @@
+import { useEffect } from 'react'
 import { Search } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { trackEvent } from '../../lib/analytics'
 import { cn, type GemFilterState, type GemSort } from '../../lib/utils'
 import { translateGemType } from '../../i18n/gemTypes'
 import type { Locale } from '../../i18n'
+
+/** How long the search box must sit idle before it's treated as "committed". */
+const SEARCH_TRACK_DEBOUNCE_MS = 500
 
 const SORT_OPTIONS: Array<{ value: GemSort; labelKey: string }> = [
   { value: 'no', labelKey: 'filters.sort.no' },
@@ -30,6 +35,19 @@ export function GemFilters({
   const locale = i18n.language as Locale
   const typeOptions = ['all', ...gemTypes]
 
+  // Fires GA4 "search" once the box has been idle for a moment, so it
+  // reflects a committed search term rather than every keystroke. Only
+  // non-empty terms count as a search; clearing the box (e.g. via
+  // "Clear Filters") isn't one.
+  useEffect(() => {
+    const query = value.search.trim()
+    if (!query) return
+    const timeout = setTimeout(() => {
+      trackEvent('search', { search_term: query })
+    }, SEARCH_TRACK_DEBOUNCE_MS)
+    return () => clearTimeout(timeout)
+  }, [value.search])
+
   return (
     <div className={className}>
       <div
@@ -43,7 +61,17 @@ export function GemFilters({
             <button
               key={type}
               type="button"
-              onClick={() => onChange({ ...value, type })}
+              onClick={() => {
+                // Only an actual change is "the visitor changed a
+                // filter" — re-clicking the already-active option isn't.
+                if (type !== value.type) {
+                  trackEvent('filter_collection', {
+                    filter_type: 'gemstone',
+                    filter_value: type,
+                  })
+                }
+                onChange({ ...value, type })
+              }}
               aria-pressed={active}
               className={cn(
                 'border-b pb-1 text-sm transition-colors duration-200',
